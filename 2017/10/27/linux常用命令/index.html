@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>linux常用命令 | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-27T08:12:43.000Z" itemprop="datePublished">
+          2017-10-27
+      </time>
+    
+</span>
+                <h1>linux常用命令</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><p>mkdir 创建一个目录 mkdir dirname    “mkdir yaohc/test”<br>rmdir 删除一个目录 rmdir dirname     “rmdir yaohc/test”<br>mvdir 移动或重命名一个目录 mvdir dir1 dir2    “mvdir test testcopy”<br>cd 改变当前目录 cd dirname<br>pwd 显示当前目录的路径名 pwd<br>ls 显示当前目录的内容 ls -la<br>dircmp 比较两个目录的内容 dircmp dir1 dir2</p>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>cat 显示或连接文件 cat filename<br>pg 分页格式化显示文件内容 pg filename<br>more 分屏显示文件内容 more filename<br>od 显示非文本文件的内容 od -c filename<br>cp 复制文件或目录 cp file1 file2<br>rm 删除文件或目录 rm filename    “rm -r test”<br>mv 改变文件名或所在目录 mv file1 file2    “mv copytest copy”<br>ln 联接文件 ln -s file1 file2<br>find 使用匹配表达式查找文件 find . -name “*.c” -print<br>file 显示文件类型 file filename</p>
+<h3 id="选择操作"><a href="#选择操作" class="headerlink" title="选择操作"></a>选择操作</h3><p>head 显示文件的最初几行 head -20 filename<br>tail 显示文件的最后几行 tail -15 filename<br>cut 显示文件每行中的某些域 cut -f1,7 -d: /etc/passwd<br>colrm 从标准输入中删除若干列 colrm 8 20 file2<br>paste 横向连接文件 paste file1 file2<br>diff 比较并显示两个文件的差异 diff file1 file2<br>sed 非交互方式流编辑器 sed “s/red/green/g” filename<br>grep 在文件中按模式查找 grep “^[a-zA-Z]” filename<br>awk 在文件中查找并处理模式 awk ‘{print $1 $1}’ filename<br>sort 排序或归并文件 sort -d -f -u file1<br>uniq 去掉文件中的重复行 uniq file1 file2<br>comm 显示两有序文件的公共和非公共行 comm file1 file2<br>wc 统计文件的字符数、词数和行数 wc filename<br>nl 给文件加上行号 nl file1 &gt;file2 </p>
+<h3 id="安全操作"><a href="#安全操作" class="headerlink" title="安全操作"></a>安全操作</h3><p>passwd 修改用户密码 passwd<br>chmod 改变文件或目录的权限 chmod ug+x filename<br>umask 定义创建文件的权限掩码 umask 027<br>chown 改变文件或目录的属主 chown newowner filename<br>chgrp 改变文件或目录的所属组 chgrp staff filename<br>xlock 给终端上锁 xlock -remote</p>
+<h3 id="编程操作"><a href="#编程操作" class="headerlink" title="编程操作"></a>编程操作</h3><p>make 维护可执行程序的最新版本 make<br>touch 更新文件的访问和修改时间 touch -m 05202400 filename<br>dbx 命令行界面调试工具 dbx a.out<br>xde 图形用户界面调试工具 xde a.out  </p>
+<h3 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h3><p>ps 显示进程当前状态 ps u<br>kill 终止进程 kill -9 30142<br>nice 改变待执行命令的优先级 nice cc -c *.c<br>renice 改变已运行进程的优先级 renice +20 32768</p>
+<h3 id="时间操作"><a href="#时间操作" class="headerlink" title="时间操作"></a>时间操作</h3><p>date 显示系统的当前日期和时间 date<br>cal 显示日历 cal 8 1996<br>time 统计程序的执行时间 time a.out</p>
+<h3 id="网络与通信操作"><a href="#网络与通信操作" class="headerlink" title="网络与通信操作"></a>网络与通信操作</h3><p>telnet 远程登录 telnet hpc.sp.NET.edu.cn<br>rlogin 远程登录 rlogin hostname -l username<br>rsh 在远程主机执行指定命令 rsh f01n03 date<br>ftp 在本地主机与远程主机 之间传输文件 ftp ftp.sp.net.edu.cn<br>rcp 在本地主机与远程主机 之间复制文件 rcp file1 host1:file2<br>ping 给一个网络主机发送 回应请求 ping hpc.sp.Net.edu.cn<br>mail 阅读和发送电子邮件 mail<br>write 给另一用户发送报文 write username pts/1<br>mesg 允许或拒绝接收报文 mesg n</p>
+<h3 id="Shell命令"><a href="#Shell命令" class="headerlink" title="Shell命令"></a>Shell命令</h3><p>history 列出最近执行过的 几条命令及编号 history<br>r 重复执行最近执行过的 某条命令 r -2<br>alias 给某个命令定义别名 alias del=rm -i<br>unalias 取消对某个别名的定义 unalias del<br>uname 显示操作系统的有关信息 uname -a<br>clear 清除屏幕或窗口内容 clear<br>env 显示当前所有设置过的环境变量 env<br>who 列出当前登录的所有用户 who<br>whoami 显示当前正进行操作的用户名 whoami<br>tty 显示终端或伪终端的名称 tty<br>stty 显示或重置控制键定义 stty -a<br>du 查询磁盘使用情况 du -k subdir<br>df 显示文件系统的总空间和可用空间 df /tmp<br>要将文件和目录从一个目录移动到另一个目录，或重命名一个文件或目录，使用 mv 命令</p>
+<h3 id="远程操作与文件传输"><a href="#远程操作与文件传输" class="headerlink" title="远程操作与文件传输"></a>远程操作与文件传输</h3><p>ssh user@remote.machine   远程登录主机（常用）<br>scp user@remote.machine:/remote/path /local/path  远程拷贝文件<br>scp /local/path user@remote.machine:/remote/path</p>
+<h3 id="任务自动化执行"><a href="#任务自动化执行" class="headerlink" title="任务自动化执行"></a>任务自动化执行</h3><p>t 执行一次<br>crontab 定时循环执行程序（常用）<br>crontab 介绍<br>1 以root登录<br>2 # crontab -e<br>3 加入一行<br>1 <em>/12 </em> <em> </em> /usr/sbin/ntpdate pool.ntp.org<br>分钟　（0-59）<br>小時　（0-23）<br>日 期　（1-31）<br>月份　（1-12）<br>星期　（0-6）//0代表星期天</p>
+<h3 id="关机和重启（非管理员勿动）"><a href="#关机和重启（非管理员勿动）" class="headerlink" title="关机和重启（非管理员勿动）"></a>关机和重启（非管理员勿动）</h3><p>shutwond [-t 秒数] [-rkhncff] 时间 [警告信息]<br>-t 秒数:设置在切换至不同的runlevel之前，警告和删除两信号之彰间的延迟时间(秒)<br>-k 发出警告信息，但不是真的要shutdown<br>-r shutdown这后重新开机<br>-h shutdown这后开机<br>-n 不经过init,由shutdown命令本身来做开机工作(不建议你使用)<br>-f 重新开机时，跳过fsck指令，不检查文件系统.<br>-F 重新开机时，强迫做fsck检查.<br>-c 将已经正在shutdown的动作取消<br>shutdown -h now 立刻关机，其中now相当于时间为0,halt,poweroff也可以关机,或者直接init 0<br>shutdown -h 20:30  系统将在今晚的8:30关机<br>shutdown -h +10    系统再过十分钟后自动关机.<br>shutdown -t3 -r now  立刻重新开机，但在警告和删除processes这间，<br>shutdown -k now  ‘Hey! Go away! now…’ 发出警告信息，但没有真的关机.</p>
+<p>reboot:<br>shutdown -r now 几乎与reboot相同，不关建议用reboot执行如下:<br>shutdown -r +30 ‘The system wiil reboot’<br>shutdown -r +10 ‘Hey!Go away!’  10分钟后系统重启.</p>
+<p>#sync; sync; sync; reboot   注：sync将数据同步写入硬盘<br>halt命令相当于shutdown -h now ，表示立刻关机。<br>reboot命令相当于shutown -r now ，表示立刻重起。</p>
+<p>last reboot命令可以查看近期的机器重启情况</p>
+<h3 id="解压缩命令"><a href="#解压缩命令" class="headerlink" title="解压缩命令"></a>解压缩命令</h3><p>gzip aaa 压缩命令（常用）<br>gzip -d aaa.gz  解压命令</p>
+<p>bzip2 -z filename 压缩,同上加-d参数解压<br>bzcat filename.bz 查看压缩文件内容</p>
+<p>tar -czvf aaa.tar.gz aaa 将目录aaa压缩成aaa.tar.gz   （常用）<br>tar -N ‘2007/03/01’ -zcvf home.tar.gz /home 在/home当中,比2007/03/01新的文件才备份.<br>tar –exclude /home/cao -zxvf myfile.tar.gz /home/* /etc 要备份/home,/etc，但不要/home/cao<br>cd /tmp; tar -cvf -/etc | tar -xvf - 将/etc/打包后直接解开/tmp底下，而不产生文件.<br>tar zxvf aaa.tar.gz 解压缩命令.<br>tar jxvf aaa.tar.bz2 解压命令<br>tar zxvf aaa.tar.gz -C /var/www 将aaa.tar.gz解压到/var/www目录下<br>cpio -covB &gt; [file|device] 备份<br>cpio -icduv &lt; [file|device] 还原</p>
+<h3 id="网络命令"><a href="#网络命令" class="headerlink" title="网络命令"></a>网络命令</h3><p>ifconfig 显示或设置网络设备,可以查看当前ip,类似于windows里的ipconfig（常用）<br>service network restart(/etc/rc.d/init.d/network restart) 重启网卡<br>ifdown eth0 关闭网卡<br>ifup eth0 开启网卡<br>route -n 查看路由表<br>route add -net 192.168.20.1 netmask 255.255.255.0 dev eth0</p>
+<p>traceroute</p>
+<p>hostname 显示主机名<br>hostname -i 显示当前主机名的IP</p>
+<h3 id="数据库启动"><a href="#数据库启动" class="headerlink" title="数据库启动"></a>数据库启动</h3><p>启动mysql：<br>service mysqld start(/etc/rc.d/init.d/mysqld start)<br>mysql -uroot -p 输入密码即可操作mysql数据库.</p>
+<p>启动Oracle<br>su - oracle<br>$lsnrctl stop<br>$lsnrctl start<br>sqlplus /nolog<br>conn /as sysdba(connected)<br>startup</p>
+<h3 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h3><p>rpm包安装:<br>rpm -ivh xxx.rpm         安装rpm包<br>rpm -qa –last | less    根据安装日期显示已经安装的包<br>rpm -qa |grep mysql -i   查询系统是否安装mysql包(-i,忽略大小写)<br>rpm -e                   删除安装的软件包<br>rpm -e mysql* –nodpes   强制删除相关的软件包<br>rpm –test               测试安装<br>rpm -qi                  查询mysql套件的说明资料<br>rpm -qpl xxx.rpm         查看rpm包内含的内容.<br>rpm -qc[d]               设定档与说明档<br>rpm -Uvh                 升级安装<br>rpmbuild –bb SPECS/xxx.spec 重新装将xxx.spec编译成rpm包.<br>rpmbuild –rebuild packagename.src.rpm 重新把.src.rpm编译成rpm包.</p>
+<p>源码编译安装(经典)<br>./configure              检查系统信息(./configure –help | more 帮助信息，可以看到相关的参数设定)<br>make clean               清除之前留下的文件<br>make                     编译<br>make install             安装</p>
+<h3 id="查看网络端口的使用情况"><a href="#查看网络端口的使用情况" class="headerlink" title="查看网络端口的使用情况"></a>查看网络端口的使用情况</h3><p>netstat 查看网络连接情况<br>netstat -i 显示网卡运行情况<br>netstat -r 查看主机的路由列表</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2017/10/27/install hexo/">
+        install hexo →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
