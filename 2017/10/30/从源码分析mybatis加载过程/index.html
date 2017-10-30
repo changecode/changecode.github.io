@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>从源码分析mybatis加载过程 | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-30T02:20:44.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                <h1>从源码分析mybatis加载过程</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="从源码分析mybatis加载过程"><a href="#从源码分析mybatis加载过程" class="headerlink" title="从源码分析mybatis加载过程"></a>从源码分析mybatis加载过程</h1><h1 id="SqlSessionFactoryBuilder"><a href="#SqlSessionFactoryBuilder" class="headerlink" title="SqlSessionFactoryBuilder"></a>SqlSessionFactoryBuilder</h1><pre><code>public class SqlSessionFactoryBuilder {
+
+    //Reader读取mybatis配置文件，传入构造方法
+    //除了Reader外，其实还有对应的inputStream作为参数的构造方法，
+    //这也体现了mybatis配置的灵活性
+    public SqlSessionFactory build(Reader reader) {
+        return build(reader, null, null);
+    }
+
+    public SqlSessionFactory build(Reader reader, String environment) {
+        return build(reader, environment, null);
+    }
+
+    //mybatis配置文件 + properties, 此时mybatis配置文件中可以不配置properties，也能使用${}形式
+    public SqlSessionFactory build(Reader reader, Properties properties) {
+        return build(reader, null, properties);
+    }
+
+    //通过XMLConfigBuilder解析mybatis配置，然后创建SqlSessionFactory对象
+    public SqlSessionFactory build(Reader reader, String environment, Properties properties) {
+        try {
+            XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, properties);
+            //下面看看这个方法的源码
+            return build(parser.parse());
+        } catch (Exception e) {
+            throw ExceptionFactory.wrapException(&quot;Error building SqlSession.&quot;, e);
+        } finally {
+            ErrorContext.instance().reset();
+            try {
+                reader.close();
+            } catch (IOException e) {
+                // Intentionally ignore. Prefer previous error.
+            }
+        }
+    }
+
+    public SqlSessionFactory build(Configuration config) {
+        return new DefaultSqlSessionFactory(config);
+    }
+}
+</code></pre><p>通过源码，可以看到SqlSessionFactory<br>Builder通过XMLConfiguration去解析传入<br>的mybatis的配置文件</p>
+<pre><code>public class XMLConfigBuilder extends BaseBuilder {
+    public XMLConfigBuilder(InputStream inputStream, String environment, Properties props) {
+        this(new XPathParser(inputStream, true, props, new XMLMapperEntityResolver()), environment, props);
+    }
+
+    private XMLConfigBuilder(XPathParser parser, String environment, Properties props) {
+        super(new Configuration());
+        ErrorContext.instance().resource(&quot;SQL Mapper Configuration&quot;);
+        this.configuration.setVariables(props);
+        this.parsed = false;
+        this.environment = environment;
+        this.parser = parser;
+    }
+
+    //外部调用此方法对mybatis配置文件进行解析
+    public Configuration parse() {
+        if (parsed) {
+            throw new BuilderException(&quot;Each XMLConfigBuilder can only be used once.&quot;);
+        }
+        parsed = true;
+        //从根节点configuration
+        parseConfiguration(parser.evalNode(&quot;/configuration&quot;));
+        return configuration;
+    }
+
+    //此方法就是解析configuration节点下的子节点
+    //由此也可看出，我们在configuration下面能配置的节点为以下10个节点
+    private void parseConfiguration(XNode root) {
+        try {
+            propertiesElement(root.evalNode(&quot;properties&quot;)); //issue #117 read properties first
+            typeAliasesElement(root.evalNode(&quot;typeAliases&quot;));
+            pluginElement(root.evalNode(&quot;plugins&quot;));
+            objectFactoryElement(root.evalNode(&quot;objectFactory&quot;));
+            objectWrapperFactoryElement(root.evalNode(&quot;objectWrapperFactory&quot;));
+            settingsElement(root.evalNode(&quot;settings&quot;));
+            environmentsElement(root.evalNode(&quot;environments&quot;)); // read it after objectFactory and objectWrapperFactory issue #631
+            databaseIdProviderElement(root.evalNode(&quot;databaseIdProvider&quot;));
+            typeHandlerElement(root.evalNode(&quot;typeHandlers&quot;));
+            mapperElement(root.evalNode(&quot;mappers&quot;));
+        } catch (Exception e) {
+            throw new BuilderException(&quot;Error parsing SQL Mapper Configuration. Cause: &quot; + e, e);
+        }
+    }
+}        
+</code></pre><h1 id="configuration节点为根节点。"><a href="#configuration节点为根节点。" class="headerlink" title="configuration节点为根节点。"></a>configuration节点为根节点。</h1><h1 id="在configuration节点之下，我们可以配置10个子节点，-分别为：properties、typeAliases、plugins、objectFactory、objectWrapperFactory、settings、environments、databaseIdProvider、typeHandlers、mappers"><a href="#在configuration节点之下，我们可以配置10个子节点，-分别为：properties、typeAliases、plugins、objectFactory、objectWrapperFactory、settings、environments、databaseIdProvider、typeHandlers、mappers" class="headerlink" title="在configuration节点之下，我们可以配置10个子节点， 分别为：properties、typeAliases、plugins、objectFactory、objectWrapperFactory、settings、environments、databaseIdProvider、typeHandlers、mappers"></a>在configuration节点之下，我们可以配置10个子节点， 分别为：properties、typeAliases、plugins、objectFactory、objectWrapperFactory、settings、environments、databaseIdProvider、typeHandlers、mappers</h1><h1 id="配置元素properties"><a href="#配置元素properties" class="headerlink" title="配置元素properties"></a>配置元素properties</h1><pre><code>&lt;configuration&gt;
+    &lt;!-- 方法一： 从外部指定properties配置文件, 除了使用resource属性指定外，还可通过url属性指定url  
+        &lt;properties resource=&quot;dbConfig.properties&quot;&gt;&lt;/properties&gt; 
+    --&gt;
+    &lt;!-- 方法二： 直接配置为xml --&gt;
+    &lt;properties&gt;
+        &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/test1&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
+    &lt;/properties&gt;
+</code></pre><h1 id="envirements元素"><a href="#envirements元素" class="headerlink" title="envirements元素"></a>envirements元素</h1><pre><code>&lt;environments default=&quot;development&quot;&gt;
+    &lt;environment id=&quot;development&quot;&gt;
+        &lt;!-- 
+        JDBC–这个配置直接简单使用了JDBC的提交和回滚设置。它依赖于从数据源得到的连接来管理事务范围。
+        MANAGED–这个配置几乎没做什么。它从来不提交或回滚一个连接。而它会让容器来管理事务的整个生命周期（比如Spring或JEE应用服务器的上下文）。
+        --&gt;
+        &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+        &lt;!--
+        UNPOOLED–这个数据源的实现是每次被请求时简单打开和关闭连接
+        POOLED–mybatis实现的简单的数据库连接池类型，它使得数据库连接可被复用，不必在每次请求时都去创建一个物理的连接。
+        JNDI – 通过jndi从tomcat之类的容器里获取数据源。
+        --&gt;
+        &lt;dataSource type=&quot;POOLED&quot;&gt;
+            &lt;!--
+            如果上面没有指定数据库配置的properties文件，那么此处可以这样直接配置 
+            &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+            &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/test1&quot;/&gt;
+            &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+            &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
+            --&gt;
+
+            &lt;!-- 上面指定了数据库配置文件， 配置文件里面也是对应的这四个属性 --&gt;
+            &lt;property name=&quot;driver&quot; value=&quot;${driver}&quot;/&gt;
+            &lt;property name=&quot;url&quot; value=&quot;${url}&quot;/&gt;
+            &lt;property name=&quot;username&quot; value=&quot;${username}&quot;/&gt;
+            &lt;property name=&quot;password&quot; value=&quot;${password}&quot;/&gt;  
+        &lt;/dataSource&gt;
+    &lt;/environment&gt;
+
+    &lt;!-- 我再指定一个environment --&gt;
+    &lt;environment id=&quot;test&quot;&gt;
+        &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+        &lt;dataSource type=&quot;POOLED&quot;&gt;
+            &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+            &lt;!-- 与上面的url不一样 --&gt;
+            &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/demo&quot;/&gt;
+            &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+            &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
+        &lt;/dataSource&gt;
+    &lt;/environment&gt;
+&lt;/environments&gt; 
+</code></pre><p>environments元素节点可以配置多个environment子节点,通过设置default值就可以切<br>换不同的环境        </p>
+<p>在配置dataSource的时候使用了${driver}<br>这种表达式，是通过PropertyParser这个类<br>解析</p>
+<pre><code>public class PropertyParser {
+
+    public static String parse(String string, Properties variables) {
+        VariableTokenHandler handler = new VariableTokenHandler(variables);
+        GenericTokenParser parser = new GenericTokenParser(&quot;${&quot;, &quot;}&quot;, handler);
+        return parser.parse(string);
+    }
+
+    private static class VariableTokenHandler implements TokenHandler {
+        private Properties variables;
+
+        public VariableTokenHandler(Properties variables) {
+            this.variables = variables;
+        }
+
+        public String handleToken(String content) {
+            if (variables != null &amp;&amp; variables.containsKey(content)) {
+                return variables.getProperty(content);
+            }
+            return &quot;${&quot; + content + &quot;}&quot;;
+        }
+    }
+}
+</code></pre><h1 id="mappers元素"><a href="#mappers元素" class="headerlink" title="mappers元素"></a>mappers元素</h1><p>mappers节点下，配置我们的mapper映射文<br>件，所谓的mapper映射文件，就是让mybati<br>s用来建立数据表和javabean映射的一个桥梁</p>
+<pre><code>&lt;configuration&gt;
+    ......
+    &lt;mappers&gt;
+        &lt;!-- 第一种方式：通过resource指定 --&gt;
+        &lt;mapper resource=&quot;com/dy/dao/userDao.xml&quot;/&gt;
+
+        &lt;!-- 第二种方式， 通过class指定接口，进而将接口与对应的xml文件形成映射关系
+             不过，使用这种方式必须保证 接口与mapper文件同名(不区分大小写)， 
+             我这儿接口是UserDao,那么意味着mapper文件为UserDao.xml 
+        &lt;mapper class=&quot;com.dy.dao.UserDao&quot;/&gt;
+        --&gt;
+
+        &lt;!-- 第三种方式，直接指定包，自动扫描，与方法二同理 
+        &lt;package name=&quot;com.dy.dao&quot;/&gt;
+        --&gt;
+        &lt;!-- 第四种方式：通过url指定mapper文件位置
+        &lt;mapper url=&quot;file://........&quot;/&gt;
+        --&gt;
+    &lt;/mappers&gt;
+    ......
+&lt;/configuration&gt;
+</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/30/mybatis-入门-1/" style="float: left;">
+        ← mybatis_入门_1
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/30/Mybatis-mybatis-插件-6/">
+        Mybatis-mybatis_插件_6 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

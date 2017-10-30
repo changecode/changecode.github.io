@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>ConcurrentHashMap | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-30T02:00:57.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                <h1>ConcurrentHashMap</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="以下所有论述基于JDK1-7"><a href="#以下所有论述基于JDK1-7" class="headerlink" title="以下所有论述基于JDK1.7"></a>以下所有论述基于JDK1.7</h1><p>HashMap是非现场安全的。而HashMap的线程<br>不安全体系在resize时的死循环及使用迭代<br>器时的fast-fail上</p>
+<h1 id="HashMap工作原理"><a href="#HashMap工作原理" class="headerlink" title="HashMap工作原理"></a>HashMap工作原理</h1><h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>常用的底层数据结构主要有数组的链表。数<br>组存储区间连续，占用内存较多，寻址容易<br>插入和删除困难。链表存储区间离散，占用<br>内存较少，寻址困难，插入和删除容易。</p>
+<p>HashMap要实现的是哈希表的效果，尽量实现<br>O(1)级别的增删改查。具体实现则是同时<br>使用了数组和链表，可以认为最外层是一个<br>数组，数组的每个元素是一个链表的表头</p>
+<h1 id="HashMap寻址方式"><a href="#HashMap寻址方式" class="headerlink" title="HashMap寻址方式"></a>HashMap寻址方式</h1><p>对于新插入的数据或者待读取的数据，HashM<br>ap将key的哈希值对数组长度取模，结果作为<br>该entry在数组中的index。在计算机中，取<br>模的代价远高于位操作的代价，因此HashMap<br>要求数组的长度必须是2的N次方。此时将key<br>的哈希值对2^N-1进行与运算，其效果即与<br>取模等效。HashMap并不要求用户在指定Hash<br>Map容量时必须传入一个2的N次方的整数，而<br>是会通过Integer.highestOneBit算出比指定<br>整数小的最大的2^N值</p>
+<p>public static int highestOneBit(int i){<br>    i |= ( i &gt;&gt; 1);<br>    i |= ( i &gt;&gt; 2);<br>    i |= ( i &gt;&gt; 4);<br>    i |= ( i &gt;&gt; 8);<br>    i |= ( i &gt;&gt; 16);<br>    return i - (i &gt;&gt;&gt; 1);<br>}</p>
+<p>由于key的哈希值的分部直接决定了所有的<br>数据在哈希表上的分部或者说决定了哈希冲<br>突的可能性，因此为防止糟糕的key的hashco<br>de实现，JDK1.7的HashMap通过如下方法使得<br>最终的哈希值的二进制形式中的1尽量均匀分<br>布从而尽可能减少哈希冲突</p>
+<p>int h = hashSeed;<br>h ^= k.hashCode();<br>h ^= (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12);<br>return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4);</p>
+<h1 id="resize死循环"><a href="#resize死循环" class="headerlink" title="resize死循环"></a>resize死循环</h1><h1 id="transfer方法"><a href="#transfer方法" class="headerlink" title="transfer方法"></a>transfer方法</h1><p>当HashMap的size超过Capacity*loadFactor<br>时，需要对HashMap进行扩容。具体方法时，<br>创建一个新的长度为原来capacity两倍的<br>数组，保证新的capacity仍为2的N次方，从<br>而保证上述寻址方式仍适用。同时需要通过<br>如下transfer方法将原来的所有数据全部重<br>新插入rehash到新的数组中</p>
+<p>void transfer(Entryp[] newTable,<br>boolean rehash) {<br>    int newcapacity = newTable.length;<br>    for(Entry<k,v> e :  table) {<br>        while(null != e) {<br>            Entry<k,v> next = e.next;<br>            if(rehash){<br>                e.hash = null == e.key<br>                ? 0 : hash(e.key);<br>            }<br>            int i = indexFor(e.hash,newCapacity);<br>            e.next = newTable[i];<br>            newTable[i] = e;<br>            e = next;<br>        }<br>    }<br>}</k,v></k,v></p>
+<p>该方法并不保证线程安全，而且在多线程<br>并发调用时，可能出现死循环。其执行过程<br>如下。从步骤2可见，转移时链表顺序反转</p>
+<p>1、遍历原数组中的元素<br>2、对链表上的每个节点遍历；用next取得<br>要转移那个元素的下一个，将e转移到新<br>数组的头部，使用头插法插入节点<br>3、循环2，直到链表节点全部转移<br>4、循环1，直到所有元素全部转移</p>
+<p>在单线程的rehash没有问题，多线程的并发<br>下就会出现问题</p>
+<h1 id="fast-fail"><a href="#fast-fail" class="headerlink" title="fast-fail"></a>fast-fail</h1><p>在使用迭代器的过程中，如果HashMap被修<br>改，那么ConcurrentModificationExceptio<br>n将被抛出。</p>
+<p>当HashMap的iterator方法被调用时，会构<br>造并返回一个新的EntryIterator对象，并<br>将EntryIteator的expectedModCount设置<br>为HashMap的modCount</p>
+<p>HashIterator() {<br>  expectedModCount = modCount;<br>  if (size &gt; 0) { // advance to first entry<br>  Entry[] t = table;<br>  while (index &lt; t.length &amp;&amp; (next = t[index++]) == null)<br>    ;<br>  }<br>}</p>
+<p>在通过该iterator的next方法访问下一个<br>Entry时，它会先检查自己的expectedMod<br>Count与HashMap的modCount是否相等，如果<br>不等，说明HashMap被修改，抛出移除</p>
+<h1 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h1><p>ConcurrentHashMap的底层数据结构仍然是<br>数组和链表。与HashMap不同的是，Concurr<br>entHashMap最外层不是一个大的数组，而是<br>一个Segment的数组。每个Segment包含一个<br>与HashMap数据结构差不多的链表的链表<br>数组</p>
+<h1 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h1><p>在读写某个key时，先取该key的哈希值。<br>并将哈希值的高N位对Segment个数取模从<br>而得到该key应该属于哪个Segment，接着<br>如同操作HashMap一样操作这个Segment。<br>为了保证不同的值均匀分布到不同的segmen<br>t需要通过如下方法计算哈希值<br>private int hash(Object k) {<br>    int h = hashSeed;<br>    ((0 != h) &amp;&amp; (k instanceof String)) {<br>    return sun.misc.Hashing.stringHash32((String) k);<br>  }<br>  h ^= k.hashCode();<br>  h += (h &lt;&lt;  15) ^ 0xffffcd7d;<br>  h ^= (h &gt;&gt;&gt; 10);<br>  h += (h &lt;&lt;   3);<br>  h ^= (h &gt;&gt;&gt;  6);<br>  h += (h &lt;&lt;   2) + (h &lt;&lt; 14);<br>  return h ^ (h &gt;&gt;&gt; 16);<br>}</p>
+<p>同样为了提高取模运算效率，通过如下计算<br>，ssize即为大于concurrencyLevel的最小<br>的2的N次方，同时segmentMask为2^N-1。这<br>一点跟上文中计算数组长度的方法一致。对<br>于某一个Key的哈希值，只需要向右移segme<br>ntShift位以取高sshift位，再与segmentMa<br>sk取与操作即可得到它在Segment数组上的<br>索引。</p>
+<p>int sshift = 0;<br>int ssize = 1;<br>while (ssize &lt; concurrencyLevel) {<br>  ++sshift;<br>  ssize &lt;&lt;= 1;<br>}<br>this.segmentShift = 32 - sshift;<br>this.segmentMask = ssize - 1;<br>Segment<k,v>[] ss = (Segment<k,v>[])new Segment[ssize];</k,v></k,v></p>
+<h1 id="同步方式"><a href="#同步方式" class="headerlink" title="同步方式"></a>同步方式</h1><p>Segment继承自ReentrantLock，所以我们可<br>以很方便的对每一个Segment上锁</p>
+<p>对于读操作，获取key所在的segment时，需<br>要保证可见性。具体实现上可以使用volati<br>le关键字，也可使用锁。但使用锁开销太<br>大，使用volatile时每次写操作都会让所有<br>CPU内缓存无效，也有一定开销，Concurren<br>tHashMap使用如下方法保证可见性，取得<br>最新的segment</p>
+<p>Segment<k,v> s = (Segment<k,v>)<br>UNSAFE.getObjectVolatile(segments, u)</k,v></k,v></p>
+<p>对于写操作，并不要求同时获取所有Segment的锁，因为那样相当于锁住了整个Map。它会先获取该Key-Value对所在的Segment的锁，获取成功后就可以像操作一个普通的HashMap一样操作该Segment，并保证该Segment的安全性。<br>同时由于其它Segment的锁并未被获取，因此理论上可支持concurrencyLevel（等于Segment的个数）个线程安全的并发读写。</p>
+<p>获取锁时，并不直接使用lock来获取，因为该方法获取锁失败时会挂起（参考可重入锁）。事实上，它使用了自旋锁，如果tryLock获取锁失败，说明锁被其它线程占用，此时通过循环再次以tryLock的方式申请锁。如果在循环过程中该Key所对应的链表头被修改，则重置retry次数。如果retry次数超过一定值，则使用lock方法申请锁。</p>
+<p>这里使用自旋锁是因为自旋锁的效率比较高，但是它消耗CPU资源比较多，因此在自旋次数超过阈值时切换为互斥锁</p>
+<h1 id="size操作"><a href="#size操作" class="headerlink" title="size操作"></a>size操作</h1><p>put remove和get操作只关心一个segment<br>而size操作需要遍历所有的segment。 计算<br>完后再解锁。但这样做的话，不利于map的<br>并行操作</p>
+<p>为更好支持并发操作，ConcurrentHashMap会在不上锁的前提逐个Segment计算3次size，如果某相邻两次计算获取的所有Segment的更新次数（每个Segment都与HashMap一样通过modCount跟踪自己的修改次数，Segment每修改一次其modCount加一）相等，说明这两次计算过程中无更新操作，则这两次计算出的总size相等，可直接作为最终结果返回。如果这三次计算过程中Map有更新，则对所有Segment加锁重新计算Size，该计算方法代码如下</p>
+<p>public int size() {<br>  final Segment<k,v>[] segments = this.segments;<br>  int size;<br>  boolean overflow; // true if size overflows 32 bits<br>  long sum;         // sum of modCounts<br>  long last = 0L;   // previous sum<br>  int retries = -1; // first iteration isn’t retry<br>  try {<br>    for (;;) {<br>      if (retries++ == RETRIES_BEFORE_LOCK) {<br>        for (int j = 0; j &lt; segments.length; ++j)<br>          ensureSegment(j).lock(); // force creation<br>      }<br>      sum = 0L;<br>      size = 0;<br>      overflow = false;<br>      for (int j = 0; j &lt; segments.length; ++j) {<br>        Segment<k,v> seg = segmentAt(segments, j);<br>        if (seg != null) {<br>          sum += seg.modCount;<br>          int c = seg.count;<br>          if (c &lt; 0 || (size += c) &lt; 0)<br>            overflow = true;<br>        }<br>      }<br>      if (sum == last)<br>        break;<br>      last = sum;<br>    }<br>  } finally {<br>    if (retries &gt; RETRIES_BEFORE_LOCK) {<br>      for (int j = 0; j &lt; segments.length; ++j)<br>        segmentAt(segments, j).unlock();<br>    }<br>  }<br>  return overflow ? Integer.MAX_VALUE : size;<br>}</k,v></k,v></p>
+<h1 id="java8-基于CAS的ConcurrentHashMap"><a href="#java8-基于CAS的ConcurrentHashMap" class="headerlink" title="java8 基于CAS的ConcurrentHashMap"></a>java8 基于CAS的ConcurrentHashMap</h1><h1 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h1><p>Java 7为实现并行访问，引入了Segment这一结构，实现了分段锁，理论上最大并发度与Segment个数相等。Java 8为进一步提高并发性，摒弃了分段锁的方案，而是直接使用一个大的数组。同时为了提高哈希碰撞下的寻址性能，Java 8在链表长度超过一定阈值（8）时将链表（寻址时间复杂度为O(N)）转换为红黑树（寻址时间复杂度为O(long(N))）。其数据结构如下图所示</p>
+<h1 id="寻址方式-1"><a href="#寻址方式-1" class="headerlink" title="寻址方式"></a>寻址方式</h1><p>Java 8的ConcurrentHashMap同样是通过Key的哈希值与数组长度取模确定该Key在数组中的索引。同样为了避免不太好的Key的hashCode设计，它通过如下方法计算得到Key的最终哈希值。不同的是，Java 8的ConcurrentHashMap作者认为引入红黑树后，即使哈希冲突比较严重，寻址效率也足够高，所以作者并未在哈希值的计算上做过多设计，只是将Key的hashCode值与其高16位作异或并保证最高位为0（从而保证最终结果为正整数）。</p>
+<p>static final int spread(int h) {<br>  return (h ^ (h &gt;&gt;&gt; 16)) &amp; HASH_BITS;<br>}</p>
+<h1 id="同步方式-1"><a href="#同步方式-1" class="headerlink" title="同步方式"></a>同步方式</h1><p>对于put操作，如果Key对应的数组元素为null，则通过CAS操作将其设置为当前值。如果Key对应的数组元素（也即链表表头或者树的根元素）不为null，则对该元素使用synchronized关键字申请锁，然后进行操作。如果该put操作使得当前链表长度超过一定阈值，则将该链表转换为树，从而提高寻址效率。</p>
+<p>对于读操作，由于数组被volatile关键字修饰，因此不用担心数组的可见性问题。同时每个元素是一个Node实例（Java 7中每个元素是一个HashEntry），它的Key值和hash值都由final修饰，不可变更，无须关心它们被修改后的可见性问题。而其Value及对下一个元素的引用由volatile修饰，可见性也有保障。</p>
+<p>static class Node<k,v> implements Map.Entry<k,v> {<br>  final int hash;<br>  final K key;<br>  volatile V val;<br>  volatile Node<k,v> next;<br>}</k,v></k,v></k,v></p>
+<p>对于Key对应的数组元素的可见性，由Unsafe的getObjectVolatile方法保证。</p>
+<p>static final <k,v> Node<k,v> tabAt(Node<k,v>[] tab, int i) {<br>  return (Node<k,v>)U.getObjectVolatile(tab, ((long)i &lt;&lt; ASHIFT) + ABASE);<br>}</k,v></k,v></k,v></k,v></p>
+<h1 id="size操作-1"><a href="#size操作-1" class="headerlink" title="size操作"></a>size操作</h1><p>put方法和remove方法都会通过addCount方法维护Map的size。size方法通过sumCount获取由addCount方法维护的Map的size。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/30/Annotation/" style="float: left;">
+        ← Annotation
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/30/java优化建议/">
+        java优化建议 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

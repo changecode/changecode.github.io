@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>DougLea_Java并发结构 | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-30T02:12:37.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                <h1>DougLea_Java并发结构</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="java并发结构"><a href="#java并发结构" class="headerlink" title="java并发结构"></a>java并发结构</h1><h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>线程是一个独立执行的调用序列，同一个进程的线程在<br>同一时刻共享一些系统资源(比如文件句柄等)也能访问<br>同一个进程创建的对象资源(内存资源). java.lang.<br>Thread对象负责统计和控制这种行为。</p>
+<p>每个程序都至少拥有一个线程即作为Java虚拟机(jvm)<br>启动参数运行在主类main方法的线程。在Java虚拟机初<br>始化过程中也可能启动其他的后台线程。这种线程的数<br>目和种类因JVM的事项而异。然而所有用户级线程都是<br>显式被构造并在主线程或者是其他用户线程中被启动。</p>
+<h1 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h1><p>Thread类中不同的构造方法接受如下参数的不同组合</p>
+<p>1、一个Runnable对象，这种情况下,Thread.start方法将会调用对应Runnable对象的run方法，如果没有提供<br>Runnable对象，那么就会立即得到一个Thread.run的<br>默认实现<br>2、一个作为线程标识名的string字符串，该标识在跟<br>和调试过程中会非常有用，除此别无它用<br>3、线程组(ThreadGroup)用来放置新创建的线程，如果<br>提供的ThreadGroup不允许被访问，那么就会抛出一个<br>SecurityException</p>
+<p>Thread类本身就已经实现了Runnable接口，因此，除了<br>提供一个用于执行的Runnable对象作为构造参数的办法<br>之外，也可以创建一个Thread的子类，通过重写其run<br>方法来达到同样的效果。然而，比较好的实践方法却是<br>分开定义一个Runnable对象并用来作为构造方法的参数<br>。将代码分散在不同的类中使得开发人员无需纠结于<br>Runnable和thread对象中使用的同步方法或同步块之间<br>内部交互。更普遍的是，这个分割使得对操作的本身与<br>其运行的上下文有着独立的控制。更好的是，同一个<br>Runnable对象可以同时用来初始化其他的线程，也可以用于构造一些轻量化的执行框架。通过继承thread类<br>实现线程的方式有一个缺点，无法再继承其他的类</p>
+<p>Thread对象拥有一个守护标识属性，这个属性无法在构<br>法方法中被赋值，但是可以在线程启动之前设置该属性<br>的值。守护状态的作用非常有限，即使是后台线程在程<br>序退出的时候也经常需要做一些清理工作。</p>
+<h1 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h1><p>调用start方法会触发Thread实例以一个新的线程启动<br>其run方法，新线程不会持有调用线程的任何同步锁</p>
+<p>当一个线程正常运行结束或者抛出某种未检测的异常，<br>线程就会终止。当线程终止之后，是不能被重新启动的<br>在同一个Thread上调用多次start方法会抛出InvalidTh<br>readStateException异常</p>
+<p>如果线程已经启动但是还没有终止，那么调用isAlive<br>方法就会返回 true，即使线程由于某些原因处于阻塞<br>状态该方法依然返回true。 如果线程已经被取消 那么<br>调用其isAlive返回false，就因各Java虚拟机的实现而<br>异。 没有方法可以得知一个处于非活动状态的线程是<br>否已经被启动过了。另一点，虽然一个线程能够得知同<br>一个线程组的其他线程的标识，但是却无法得知自己是<br>由哪个线程调用启动的</p>
+<h1 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h1><p>Java虚拟机为了实现垮平台的特性，Java语言在线程<br>调度与调度公平性上未作出任何的承若，甚至都不会<br>严格保证线程会被执行。但是Java线程却支持优先级<br>的方法，这些方法会影响线程的调度</p>
+<p>每个线程都有一个优先级，分布在Thread_MIN_PRIORITY和Thread.MAX_PRIORITY之间(1-10)，默认情<br>况下，新创建的线程都拥有和创建它的线程相同的优先<br>级。main方法所关联的初始化线程拥有一个默认的优先<br>级，这个优先级是Thread.NORM_PRIORITY(5) 线程的<br>当前优先级可以通过getPriority方法获得。线程的优<br>先级可以通过setPriority方法来动态的修改，一个线<br>程的最高级由其所在的线程组限定</p>
+<p>当可运行的线程数超过了可用的CPU数目的时候，线程<br>调度器更偏向于去执行那些拥有更高优先级的线程。<br>具体的策略因平台而异。 比如有些Java虚拟机实现总<br>是选择当前优先级最高的线程执行。有些虚拟机实现将<br>Java中的十个优先级映射到系统所支持的更小范围的<br>优先级上，因此，拥有不同优先级的线程可能最终被同<br>等对待。还有些虚拟机会使用老化策略(随着时间的增<br>长，线程的优先级逐级升高)动态调整线程优先级，另<br>一些虚拟机实现的调度策略会确保低优先级的线程最终<br>还是能够有机会运行。 设置线程优先级可以影响在同<br>一台机器上运行的程序之间的调度结果，但不是必须的</p>
+<p>不同类任务再线程优先级设定上的通常约定<br>10  应急处理<br>7-9 交互相关，事件驱动<br>4-6 IO限制类<br>2-3 后台计算<br>1 仅在没有任何线程运行时运行的</p>
+<h1 id="控制方法"><a href="#控制方法" class="headerlink" title="控制方法"></a>控制方法</h1><p>只有很少几个方法可以用于垮线程交流</p>
+<p>每个线程都有一个相关的Boolean类型的中孤单标识<br>在线程t上调用t.interrupt会将该线程的中断标识为<br>true，除非线程t正处于object.wait  thread.sleep<br>或者thrad.join</p>
+<p>任何一个线程的中断状态都可以通过调用isInterrupt<br>ed方法来得到，如果线程已经通过interrupt方法被<br>中断，这个方法将会返回true</p>
+<p>但是如果调用了thread.interrupted方法且中断标识<br>还是没有被重置，或者是线程处于wait sleep join<br>过程中，调用isInterrupted方法将会抛出异常。调用<br>t.join方法将会暂停执行调用线程，如果线程没能够<br>在指定的时间内完成，调用线程将重新得到控制权。<br>isAlive方法的实现原理，所以在一个还没启动的线程<br>上调用join方法时没有意义的</p>
+<h1 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h1><p>Thread类中的部分方法被设计只适用于当前正在运行<br>的线程，为强调这点，这些方法都被声明为静态的</p>
+<p>thread.currentThread方法会返回当前线程的引用，<br>得到这个引用可以用来调用其他的非静态方法</p>
+<p>Thread.interrupted方法会清除当前线程的中断状态<br>并返回前一个状态</p>
+<p>Thread.yield方法只是建议Java虚拟机对其他处于<br>就绪状态的线程调度执行，而不是当前线程</p>
+<h1 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h1><p>每一个线程都是一个线程组的成员。默认情况下，新<br>建线程和创建它的线程属于同一个线程组。线程组是<br>以树状分布的。当创建一个新的线程组，这个线程组<br>成为当前线程组的子组。getThreadGroup方法会返回<br>房钱线程所属的线程组</p>
+<h1 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h1><h1 id="对象与锁"><a href="#对象与锁" class="headerlink" title="对象与锁"></a>对象与锁</h1><p>每一个object类及其子类的实例都拥有一个锁，其中<br>标量类型int float等不适对象类型，但是标量类型<br>可以通过其包装类来作为锁。单独的成员变量时不能<br>标明为同步的。锁只能用在使用了这些变量的方法上<br>，成员变量可以被声明为volatile，这个方式会影响<br>该变量的原子性，可见性以及排序性。 </p>
+<p>类似的，持有标量变量元素的数组对象拥有锁，但是<br>其中的标量元素却不拥有锁。如果锁住了一个数组并<br>不代表其数组成员都可以被原子的锁定。也没有能在<br>一个原子操作中锁住多个对象的方法</p>
+<h1 id="同步方法同步块"><a href="#同步方法同步块" class="headerlink" title="同步方法同步块"></a>同步方法同步块</h1><p>使用synchronized关键字，有两种语法结构：同步代<br>码块和同步方法。同步代码块需要提供一个作为锁的<br>对象参数，这就允许了任意方法可以去锁任一个对象<br>但是同步代码块使用最普通的参数却是this<br>synchronized void f() { /<em> body </em>/ }<br>void f() { synchronized(this) { /<em> body </em>/ } }<br>同步实例方法在其子类和父类中使用同样的锁，但是<br>内部类方法的同步却独立于其外部类，然而一个非静<br>态内部类方法可以通过下面这种方式锁住其外部类<br>synchronized(OuterClass.this)</p>
+<h1 id="等待锁与释放锁"><a href="#等待锁与释放锁" class="headerlink" title="等待锁与释放锁"></a>等待锁与释放锁</h1><p>使用synchronized关键字遵循一套内置的锁等待-释放<br>机制。所有的锁都是块结构的。当进入一个同步方法<br>或同步块的时候必须获得该锁，而退出的时候必须释<br>放锁。</p>
+<p>锁操作是建立在独立的线程上的而不是独立的调用<br>基础上。一个线程能够进入一个同步代码的条件是<br>当前锁未被占用或者当前线程已经占用了这个锁，<br>否则线程就阻塞。这就允许一个同步方法可以去直接<br>调用同一个锁管理的另一个同步方法，而不需要被<br>冻结</p>
+<p>同步方法或同步块遵循机制有一个前提，那就是所有<br>的同步方法或同步块都是在同一个锁对象上。如果一<br>个同步方法正在执行中，其他的非同步方法也可以在<br>任何时候执行。也就是说，同步不等于原子性，但是同步机制可以用阿里实现原子性</p>
+<h1 id="静态变量-方法"><a href="#静态变量-方法" class="headerlink" title="静态变量/方法"></a>静态变量/方法</h1><p>锁住一个对象并不会原子性的保护盖对象类或者其父<br>类的静态成员变量，而应该通过同步的静态方法或<br>代码块保证访问一个 静态的成员变量。静态同步使用<br>的是静态方法锁声明的类对象所拥有的锁。 类C的静<br>态锁可以通过内置的实例方法获取得到<br>synchronized(C.class) { /<em> body </em>/ }</p>
+<p>每个类对应的静态锁和其他的类没有任何的关系。通<br>国在子类中增加一个静态方法来试图保护父类中的静<br>态成员变量时无效的。应使用显式的代码块来代替<br>synchronized(getClass()) { /<em> body </em>/ } // Do not use 这种方式，可能锁住的实际中的类，并不是需要保护<br>的静态成员变量所对应的类</p>
+<p>Java虚拟机在类加载和类初始化阶段，内部获得并释<br>放类锁。</p>
+<h1 id="监视器"><a href="#监视器" class="headerlink" title="监视器"></a>监视器</h1><p>正如每个对象都有一个锁一样，每一个对象同时拥有<br>一个由这些方法(wait notify notifyAll thread<br>interrupt)管理的一个等待集合。拥有锁和等待集合<br>的实体通常称为监视器，任何一个对象都可以作为<br>一个监视器</p>
+<p>对象的等待集合是由Java虚拟机来管理的，每个等待<br>集合上都持有在当前对象上等待但尚未被唤醒或是释<br>方的阻塞线程。各方法操作描述如下</p>
+<h1 id="wait"><a href="#wait" class="headerlink" title="wait"></a>wait</h1><p>如果当前线程已经终止，那么这个方法会立即退出并<br>抛出Interruptedexception异常。否则当前线程就进<br>入阻塞状态</p>
+<p>Java虚拟机将该线程放置在目标对象的等待集合中</p>
+<p>释放目标对象的同步锁，但是除此之外的其他锁依然<br>由该线程持有。即使是在目标对象上多次嵌套的同步<br>调用，所持有的可重入锁也会完整的释放。这样，后<br>面恢复的时候，当前锁状态能够完全恢复</p>
+<h1 id="notify"><a href="#notify" class="headerlink" title="notify"></a>notify</h1><p>java虚拟机从目标对象的等待集合中随意选择一个线<br>程，并从等待集合中移出，当等待集合中存在多个<br>线程时，并没有机制保证哪个线程会被选择到</p>
+<p>线程必须重新获得目标对象的锁，直到有线程调用<br>notify释放该锁，否则线程会一直阻塞下去。如果<br>其他线程先一步获得了该锁，那么线程将继续进入<br>阻塞状态</p>
+<p>线程从之前wait的点开始继续执行</p>
+<h1 id="notifyAll"><a href="#notifyAll" class="headerlink" title="notifyAll"></a>notifyAll</h1><p>与notify不同的时，它是通知所有线程</p>
+<h1 id="interrupt"><a href="#interrupt" class="headerlink" title="interrupt"></a>interrupt</h1><p>如果在一个因wait而中断的线程上调用Thread.interr<br>upt方法，之后的处理机制相同，只是在重新获取这个<br>锁之后，该方法将会抛出一个InterruptedException<br>异常病区线程的中毒那标识被设为false，如果interrupt操作和notify操作在同一时间发生，那么不能保证<br>哪个操作先被执行</p>
+<h1 id="time-wait"><a href="#time-wait" class="headerlink" title="time wait"></a>time wait</h1><p>定时版本的wait方法，wait(long mesecs)和wait(long mesecs, int nanosecs)参数指定了需要在等待<br>集合中等待的最大时间值。如果在时间限制之内没有<br>被唤醒，将自动释放，除此之外，其他的操作都和无<br>参数的wait一样。 并没有状态能够表名线程正常唤醒<br>与超时唤醒之间的不同。需要注意的是，wait(0)与<br>wait(0,0)方法其实都具有特殊的意义，其相当于不限<br>时的wait方法， 由于线程竞争，调度策略以及定时器<br>粒度等方法的原因，定时等待方法可能回消耗任意的<br>时间</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/30/DougLea-java-fork-join/" style="float: left;">
+        ← DougLea_java_fork_join
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/30/DougLea-javajava内存模型-内存屏障/">
+        DougLea_javajava内存模型-内存屏障 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

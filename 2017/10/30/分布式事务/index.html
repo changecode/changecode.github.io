@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>分布式事务 | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-30T01:57:53.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                <h1>分布式事务</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><h2 id="特性：CAP"><a href="#特性：CAP" class="headerlink" title="特性：CAP"></a>特性：CAP</h2><ul>
+<li><p>Consistency：强一致性就是在客户端任何时候看到各节点的数据都是一致的</p>
+</li>
+<li><p>Availability:高可用性就是在任何时候都可以读写</p>
+</li>
+<li><p>Partition Tolerance:分区容错性是在忘了故障、某些节点不能通信的时候仍然继续工作。以实际效果而言，分区相当于对通信的时限要求。系统如果不能在时限内达成数据一致性，就意味着发生了分区的情况，必须就当前操作在C和A之间做出选择</p>
+</li>
+</ul>
+<h2 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h2><ul>
+<li><p>Atomicity:原子性，一个事务中所有操作，要么全部完成，要么全部不完成，不会结束中间某个环节。事务在执行过程中发生错误，会被回滚到事务开始前的状态</p>
+</li>
+<li><p>Consistency:一致性，在事务开始之前和事务结束之后，数据库的完整性没有被破坏</p>
+</li>
+<li><p>Isolation:隔离性，数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可言防止多个事务并发执行时由于交叉执行而导致数据的不一致</p>
+</li>
+<li><p>Durability:持久性，事务处理结束后，对数据的修改就是永久的，即使系统故障也不会丢失 </p>
+</li>
+</ul>
+<h2 id="数据一致性理解"><a href="#数据一致性理解" class="headerlink" title="数据一致性理解"></a>数据一致性理解</h2><ul>
+<li><p>强一致性:当更新操作完成之后，任何多个后续进程或者线程的访问都会返回最新的更新过得值。这种是对用户最友好的，就是用户上一次写了什么，下一次就能读到什么。这种实现需要牺牲可用性</p>
+</li>
+<li><p>弱一致性:系统并不保证后续进程或者线程的访问都会返回最新的更新过得值。系统在数据写入成功之后，不承若立即可用读到最新写入的值</p>
+</li>
+<li><p>最终一致性:系统保证在没有后续更新的前提下，系统最终返回上一次更新操作的值。</p>
+</li>
+</ul>
+<h2 id="常用分布式技术说明"><a href="#常用分布式技术说明" class="headerlink" title="常用分布式技术说明"></a>常用分布式技术说明</h2><ul>
+<li>本地消息表</li>
+</ul>
+<p>基本设计思想就是将远程分布式事务拆分成一系统的本地事务。以转账的例子来描述：<br>第一步扣款1W，通过本地事务保证了凭证消息插入到消息表中<br>        Begin transaction<br>            update A set amount = amount - 10000 where userId = 1;<br>            insert into message(userId,price,status) values(1,10000,1);<br>        end transaction<br>        commit;<br>第二步，通知对方银行账户上加1W，通常采用两种方式：</p>
+<pre><code>* 采用时效性高的MQ，由对方订阅消息并监听，有消息时自动触发事件
+* 采用定时轮询扫描的方式，去检查消息表的数据
+</code></pre><ul>
+<li><p>消息中间件</p>
+</li>
+<li><p>非事务性的消息中间件<br>  还是上面提到的跨行转账，我们很难保证在扣款完成之后对MQ投递消息的操作就一定能成功。这样一致性就很难保证</p>
+<pre><code>try{
+    boolean result = dao.update(model);
+    if(result) {
+        mq.send(model);
+    }
+}catch(Exception t) {
+    rollback();
+}
+</code></pre><p>  可能出现的情况：<br>  1、操作数据库成功，向MQ投递消息也成功<br>  2、操作数据库失败，不会向MQ中投递消息<br>  3、操作数据库成功，但是向MQ中投递消息时失败，向外抛出异常，刚刚执行数据库的操作将被回滚<br>  从上面分析的几种情况来说，基本上能保证发送者发送消息的可靠请。</p>
+<p>  消费者端面临的问题<br>  1、消息出列后，消费者对应的业务操作要执行成功。如果业务执行失败，消息不能失效或者丢失，需要保证消息与业务操作一直<br>  2、尽量避免消息重复消费。如果重复消费，也不能影响业务结果</p>
+</li>
+</ul>
+<ul>
+<li>支持事务的消息中间件(RocketMQ为例)</li>
+</ul>
+<p>1、第一阶段，rocketmq在执行本地事务之前，会先发送一个prepared消息，并且会持有这个消息的地址<br>2、执行本地事务操作<br>3、确认消息发送，通过第一阶段拿到的地址去访问消息，并修改消息状态，如果本地事务成功，则修改状态为已提交，否则修改状态为已回滚<br>但是如果第三阶段的确认消息发送失败了怎么办？rocketmq会定期扫描消息集群中事务消息，如果发现了prepare状态的消息，它会向消息发送者确认本地事务是否已经执行成功，如果成功是回滚还是继续发送确认消息呢？rocketmq会跟进发送端设置的策略来决定是回滚还是继续发送确认消息。这样就保证了消息发送和本地事务同时成功或同时失败</p>
+<h2 id="2PC-二阶段提交"><a href="#2PC-二阶段提交" class="headerlink" title="2PC(二阶段提交)"></a>2PC(二阶段提交)</h2><p>分布式事务最常用的解决方案就是二阶段提交，在分布式系统中，每个节点虽然可以知晓自己的操作是成功或者失败，却无法知道其他节点的操作是成功或失败。当一个事务垮多个节点是，为了保证事务的ACID特性，需要引入一个作为协调者的组件来统一掌控所有参与者节点的操作结果并最终指示这些节点是否要报操作结果进行真正的提交。<br>因此，二节点提交的算法思路可以概括为：参与者将操作成败通知协调者，再由协调组根据所有参与者的反馈情况决定各参与者是否要提交操作还终止操作</p>
+<p>二个阶段指:第一阶段-准备阶段(投票阶段)第二阶段:提交阶段(执行阶段)</p>
+<h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>该阶段的主要目的在于打探数据库集群中的各个参与者是否能够正常的执行事务，步骤如下<br>1、协调者向所有参与者发送事务执行请求，并等待参与者反馈事务执行结果<br>2、事务参与者收到请求之后，执行事务，但不提交，并记录事务日志<br>3、参与者将自己事务执行情况反馈给协调者，同时阻塞等待协调者的后续指令</p>
+<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><p>在第一个阶段协调者的询盘之后，各个参与者会回复自己事务的执行情况，这时存在三种可能<br>1、所有参与者回复能够正常执行事务<br>对于第一种情况，协调者将向所有的参与者发出提交事务的通知，步骤如下：<br>    1) 协调者向各个参与者发送commit通知，请求提交事务2<br>    2) 参与者收到事务提交通知之后，执行commit操作，然后释放占用的资源<br>    3) 参与者向协调者返回事务commit结果信息<br>2、一个多多个参与者回复事务执行失败<br>3、协调者等待超时<br>对于第二、三种情况，协调者认为参与者无法正常成功执行事务，为了整个集群数据的一致性，所以要向各个参与者发送事务回滚通知，步骤如下：<br>    1) 协调者向各个参与者发送事务rollback通知，请求回滚事务<br>    2) 参与者收到事务回滚通知之后，执行rollback，然后释放战友资源<br>    3) 参与者向协调者返回事务rollback结果信息</p>
+<p>二阶段存在的问题，如果协调者出现问题，服务将不能正常使用；同步阻塞，效率低；可能存在不一致性</p>
+<h2 id="3PC-三阶段"><a href="#3PC-三阶段" class="headerlink" title="3PC(三阶段)"></a>3PC(三阶段)</h2><h2 id="第一阶段-can-commit"><a href="#第一阶段-can-commit" class="headerlink" title="第一阶段(can_commit)"></a>第一阶段(can_commit)</h2><p>该阶段协调者会去询问各个参与者是否能够正常执行事务，参与者根据自身情况回复一个预估值，相对于真正的执行事务，这个过程是轻量的，步骤如下：<br>1、协调者向各个参与者发送事务询问通知，询问是否可以执行事务操作，并等待回复<br>2、各个参与者依据自身状况回复一个预估值，如果预估自己能够正常执行事务就返回确定信息，并进入预备状态，否则返回否定信息</p>
+<h2 id="第二阶段-pre-commit"><a href="#第二阶段-pre-commit" class="headerlink" title="第二阶段(pre_commit)"></a>第二阶段(pre_commit)</h2><p>本阶段协调者会跟进第一阶段的询盘结果采取相应操作，询盘结果主要有三种<br>1、所有参与者都返回确定信息<br>针对第一种情况，协调者会向所有参与者发送事务执行情况，步骤如下<br>    1 协调者向所有的事务参与者执行通知<br>    2 参与者收到通知后，执行事务，但不提交<br>    3 参与者将事务执行情况返回给客户端</p>
+<p>2、一个或多个参与者返回否定信息<br>3、协调者等待超时<br>针对第二三中情况，协调者认为事务无法执行，于是想各个参与者发出abort通知，请求退出预备状态</p>
+<h2 id="第三阶段-do-commit"><a href="#第三阶段-do-commit" class="headerlink" title="第三阶段(do_commit)"></a>第三阶段(do_commit)</h2><p>如果第二阶段事务未中断，那么本阶段协调者将会依据事务执行返回的结果来决定提交或回滚事务，分为三种情况<br>1、所有参与者都会能注册执行事务<br>针对第一种情况，协调者向各个参与者发起事务提交请求，步骤如下：<br>    1 协调者向所有参与者发送事务commit通知<br>    2 所有参与者在收到通知之后执行commit操作，并释放占用资源<br>    3 参与者向协调者反馈事务提交结果</p>
+<p>2、一个或多个参与者执行事务失败<br>3、协调者等待超时<br>第二三种情况，协调者认为事务无法正常执行，向参与者发送事务rollback通知</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/30/分布式锁三种实现/" style="float: left;">
+        ← 分布式锁三种实现
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/30/redis-order-strike/">
+        redis-order-strike →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

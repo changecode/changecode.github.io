@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>MySQL和InnoDB | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-30T02:19:26.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                <h1>MySQL和InnoDB</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="MySQL和InnoDB"><a href="#MySQL和InnoDB" class="headerlink" title="MySQL和InnoDB"></a>MySQL和InnoDB</h1><h1 id="数据库和实例"><a href="#数据库和实例" class="headerlink" title="数据库和实例"></a>数据库和实例</h1><p>在MySQL中，实例和数据库往往都是一一对应的，<br>而我们无法直接操作数据库，而是要通过数据库<br>实例来操作数据库文件，可以理解为数据库实例是<br>数据库为上层提供的一个专门用于操作的接口</p>
+<p>在Unix上，启动一个MySQL实例往往会产生两个<br>进程，mysqld就是真正的数据库服务守护进程，<br>而mysqld_safe是一个用于检查和设置mysqld启<br>动的控制程序，负责监控MySQL进程的执行，当<br>mysqld发生错误时 ，mysqld_safe会对其状态<br>进行检查并在合适的条件下重启</p>
+<h1 id="MySQL的架构"><a href="#MySQL的架构" class="headerlink" title="MySQL的架构"></a>MySQL的架构</h1><p>最上层用于连接、线程处理的部分；第二层包含<br>大多数MySQL的核心服务，包括对sql的解析、<br>分析、优化和缓存等功能，存储过程、触发器<br>和试图都是在这里实现的；而第三层就是MySQL<br>中真正负责数据的存储和提取的存储引擎<br>如：InnoDB MyISAM等，本文针对InnoDB分析</p>
+<h1 id="数据的存储"><a href="#数据的存储" class="headerlink" title="数据的存储"></a>数据的存储</h1><p>在整个数据库体系结构中，可以使用不同的存储<br>引擎来存储数据，而绝大数存储引擎都是以二<br>进制的形式存储数据</p>
+<p>在InnoDB存储引擎中，所有的数据都被逻辑地<br>存放在表空间中，表空间(tablespace)是存储<br>引擎中最高的存储逻辑单位，在表空间的下面<br>又包括段(segement)、区(extent)、页(page)<br>同一个数据库实例的所有表空间都有相同的页<br>大小；末日情况下，表空间中的页大小都为16k<br>当然也可以通过改变innodb_page_size选项对<br>默认大小进行修改，需要注意的是不同的页大小<br>最终也会导致区大小的不同。在InnoDB存储引擎<br>中，一个区的大小最小为1MB，页的数量最少为<br>64个</p>
+<h1 id="如何存储表"><a href="#如何存储表" class="headerlink" title="如何存储表"></a>如何存储表</h1><p>mysql使用InnoDB存储表时，会将表的定义和<br>数据索引等信息分开存储，其中前者存储在.frm<br>文件中，候着存储在.idb文件中</p>
+<h1 id="frm文件"><a href="#frm文件" class="headerlink" title=".frm文件"></a>.frm文件</h1><p>无论在mysql中选择了哪个存储引擎，所有的<br>MySQL表都会在硬盘上创建一个.frm文件，用来<br>描述表的格式或者说定义 .frm文件的格式在不<br>同的平台都是相同的。create table test_frm<br>{column1 char(5), column2 integer}; 以上<br>代码创建表时，会在磁盘上的datadir文件夹中<br>生成一个test_frm.frm文件，这个文件中就包含<br>表结构相关的信息</p>
+<h1 id="ibd文件"><a href="#ibd文件" class="headerlink" title=".ibd文件"></a>.ibd文件</h1><p>InnoDB中用于存储数据的文件总共有两个部分<br>一是系统表空间文件，包括ibdata1 ibdata2<br>等文件，其中存储了InnoDB系统信息和用户数<br>据库表数据和索引，是所有表公用的。 当打开<br>innodb_file_per_table选项时，.ibd文件就是<br>每一个表独有的表空间，文件存储了当前表的<br>数据和相关的索引数据</p>
+<h1 id="如何存储记录"><a href="#如何存储记录" class="headerlink" title="如何存储记录"></a>如何存储记录</h1><p>与现有的大多数存储引擎一样，InnoDB使用页作<br>为磁盘管理的最小单位；数据在InnoDB存储引擎<br>中都是按行存储的，每个16kb大小的页中可以<br>存放2-200行的记录</p>
+<h1 id="行溢出数据"><a href="#行溢出数据" class="headerlink" title="行溢出数据"></a>行溢出数据</h1><p>当InnoDB使用Compact或者Redundant格式存储<br>极长的varchar或者blob这类对象时，并不会直接<br>将所有的内容都存放在数据页节点中，而是将行<br>数据中的前768个字节存储在数据页中，后面会<br>通过偏移量指向溢出页。但是当我们使用新的<br>行记录格式Compressed或者Dynamic时都只会<br>在行记录中保存20个字节的指针，实际的数据<br>都会存放在溢出页中。  当然在实际存储中，可<br>能对不同长度的text和blob列进行优化</p>
+<h1 id="数据页结构"><a href="#数据页结构" class="headerlink" title="数据页结构"></a>数据页结构</h1><p>页时InnoDB存储引擎管理数据的最小磁盘单位<br>而B-Tree节点就是实际存放表中数据的页面<br>每个页面包含七个部分： 每个页中包含两队<br>header/trailer：内部的page header/page<br>directory关心的是页额状态信息，而fil header<br>/fil trailer关心的是记录页的头信息。 在<br>页的头部和尾部之间就是用户记录和空闲空间<br>每一个数据页中都包含Infimum和supremum这<br>两个虚拟的记录(可以理解为占位符)，infimum<br>记录是比该页中任何主键值都要小的值，<br>supremum是该页中最大值</p>
+<p>Infimum|Row|Row|Row|Row|Row|Supremum<br>Use Records就是整个页面中真正用于存放行<br>记录的部分，而Free Space就是空余空间，它<br>是一个链表的数据结构，为了保证插入和删除<br>效率，整个页面并不会按照主键顺序对所有记录<br>进行排序，它会自动从左侧向右寻找空白节点<br>进行插入，行记录在物理存储上并不是按照<br>顺序的，它们之间的顺序是由next_record<br>指针控制的。</p>
+<p>B+树在查找对应的记录时，并不会直接从树中<br>找出对应的行记录，它只能获取记录所在的页<br>将整个页加载到内存中，再通过page directory<br>中存储稀疏索引和n_owned、next_record属性<br>去除对应的记录，不过因为这已操作是在内存<br>中进行的，所以通常会忽略这部分查找的耗时</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引是存储引擎能够快速定位记录的秘密武器<br>对于提升数据库的性能、减轻数据库服务器的<br>负担有着非常重要的作用： 索引优化是对查询<br>性能优化的最有效手段，能够轻松地将查询的<br>性能提高几个数量级</p>
+<h1 id="索引的数据结构"><a href="#索引的数据结构" class="headerlink" title="索引的数据结构"></a>索引的数据结构</h1><p>InnoDB存储引擎 在绝大多数情况下使用B+树<br>建立索引，这是关系型数据库中查找最为常用<br>和有效索引，但是B+树索引并不能找到一个给定<br>键对应的具体值，它只能找到数据行对应的页<br>然后数据库把整个页读入到内存中，并在内存中<br>查找具体的数据行</p>
+<p>B+树是平衡树，它查找任意节点所耗费的时间<br>都是相同的，比较的次数就是B+树的高度</p>
+<h1 id="聚集索引和辅助索引"><a href="#聚集索引和辅助索引" class="headerlink" title="聚集索引和辅助索引"></a>聚集索引和辅助索引</h1><p>二者之间最大区别就是聚集索引中存放着一条<br>行记录的全部信息，而辅助索引中只包含索引<br>列和一个用于查找对应行记录的书签</p>
+<h1 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h1><p>InnoDB存储引擎中的表都是使用索引组织的，<br>也就是按照键的顺序存放；聚集索引就是按照<br>表中主键的顺序够贱一颗B+树，并在叶节点中<br>存放表中的行记录数据<br>create table users(<br>    id int not null,<br>    first_name varchar(20) not null,<br>    last_name varchar(20) not null,<br>    age int not null,<br>    primary key(id),<br>    key(last_name, first_name, age)<br>    key(first_name)<br>);<br>以上sql在数据库中创建一张表，B+树就会使用<br>ID作为索引的键，并在叶子节点中存储一条记录<br>中的所有信息。<br>聚集索引与表的物理存储方式有着非常密切的关<br>系，所有正常的表应该有且仅有一个聚集索引<br>(绝大部分情况下都是主键)表中的所有行记录<br>数据都是按照聚集索引的顺序存放的。</p>
+<h1 id="辅助索引"><a href="#辅助索引" class="headerlink" title="辅助索引"></a>辅助索引</h1><p>数据库将所有的非聚集索引都划分为辅助索引<br>辅助索引也是通过B+树实现的，但是它的叶节点<br>并不包含行记录的全部数据，仅包含索引中的<br>所有键和一个用于查找对应行记录的书签，在<br>InnoDB中这个书签就是当前记录的主键<br>辅助索引的存储并不会影响聚集索引，因为聚集<br>所有构成的B+树是数据实际存储的形式，而辅助<br>索引只用于加速数据的查找，所以一张表上往往<br>有多个辅助索引以此来提升数据库的性能。<br>如果在表users中存在一个辅助索引first_name<br>age，按照first_name,age的字母顺序对表中的<br>数据进行排序，当查找主键时，再通过聚集索引<br>获取到整条行记录<br>select * from users where first_name = ‘xx’<br>and age &lt;= 10<br>通过辅助运输查找找对应的主键，然后在聚集<br>索引中使用主键获取对应的行记录，这也是通常<br>情况下行记录的查找方式</p>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><p>锁一般分为乐观锁和悲观锁两种，InnoDB存储<br>引擎中使用的就是悲观锁，而按照锁的粒度划分<br>也分为行锁和表锁</p>
+<h1 id="并发控制机制"><a href="#并发控制机制" class="headerlink" title="并发控制机制"></a>并发控制机制</h1><p>1、乐观锁是一种思想，其实并不是一种真正的<br>锁，它会先尝试对资源进行修改，在写回时判断<br>资源是否进行了改变，如果没有发生改变就写<br>回，否则就会进行重试，在整个的执行过程中<br>其实都没有对数据库进行加锁<br>2、悲观锁就是一种真正的锁，它会获取资源前<br>进行加锁，确保同一时刻只有有限的线程能够<br>访问该资源，其他想要尝试获取资源的操作都<br>会进入等待状态，知道该线程完成了对资源的<br>操作并且释放了锁后，其他线程才能重新操作<br>资源<br>乐观锁不会存在死锁的问题，但是由于更新后验<br>证，所以当冲突频率和重试成本较高时更推荐<br>使用悲观锁，而需要非常高的响应速度并且并发<br>量非常大的时候使用乐观锁就能较好的解决问题</p>
+<h1 id="锁的分类"><a href="#锁的分类" class="headerlink" title="锁的分类"></a>锁的分类</h1><p>对数据的操作其实只有两种，也就是读和写，<br>而数据库在时限锁时，也会对这两种操作使用<br>不同的锁；InnoDB时限了标准的行级锁，也就是<br>共享锁和互斥锁<br>共享锁：允许事务对一条行数据进行读取<br>互斥锁：允许事务对一条行数据进行删除或更新<br>所有可以在数据库中并行读，但只能串行写，<br>只有这样才能保证不会发生线程竞争，实现线程<br>安全</p>
+<h1 id="锁的粒度"><a href="#锁的粒度" class="headerlink" title="锁的粒度"></a>锁的粒度</h1><p>意向共享锁：事务想要在获得表中某些记录的<br>共享锁，需要在表上先加意向共享锁<br>意向互斥锁:事务想要在获得表中某些记录的<br>互斥锁，需要在表上先加意向互斥锁<br>举个例子： 如果每一意向锁，当已经有人使用<br>行锁对表中的某一行进行修改时，如果另外一个<br>请求要对全表进行修改，那么就需要对所有的行<br>是否被锁定进行扫描，在这种情况下，效率是<br>非常低的。不过在引入意向锁之后，但有人使用<br>行锁对表中的某一行进行修改之前，会先为表添<br>加意向互斥锁，再为行记录添加互斥锁，在这<br>时如果有人尝试对权标进行修改就不需要判断<br>表中的每一行数据是否被加锁了，只需要通过<br>等待意向互斥锁被释放就可以了</p>
+<h1 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h1><p>read uncommited：使用查询语句不会加锁，但<br>可能会读到未提交的行<br>read commited：只对记录加记录锁，而不会在<br>记录之间加间隙锁，所以运行新的记录插入到被<br>锁定记录的附件，所以再多次使用查询语句是，<br>可能得到不同的结果<br>repeatable read：多次读取同一范围的数据会<br>返回第一次查询的快照，不会返回不同的数据行<br>但是可能发生幻读<br>serializable：InnoDB隐式将全部的查询语句<br>加上共享锁，解决幻读的问题。<br>MySQL默认事务隔离级别就是repeatable read<br>但是它通过next-key锁也能够在某种程度上<br>解决幻读的问题</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/30/Mybatis-mapper映射文件配置-3/" style="float: left;">
+        ← Mybatis-mapper映射文件配置_3
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/30/mysql事务实现/">
+        mysql事务实现 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

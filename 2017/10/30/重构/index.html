@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>重构 | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-30T01:59:05.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                <h1>重构</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="常见重构方法"><a href="#常见重构方法" class="headerlink" title="常见重构方法"></a>常见重构方法</h1><p>Duplicated Code</p>
+<h1 id="同一个class内的两个函数含有相同的表达"><a href="#同一个class内的两个函数含有相同的表达" class="headerlink" title="同一个class内的两个函数含有相同的表达"></a>同一个class内的两个函数含有相同的表达</h1><p>式–需要Extract Method，提炼出重复代码<br>然后让两个地点都调用被提炼出来的那一段<br>代码</p>
+<h1 id="两个互为兄弟的subclass内含相同的表达"><a href="#两个互为兄弟的subclass内含相同的表达" class="headerlink" title="两个互为兄弟的subclass内含相同的表达"></a>两个互为兄弟的subclass内含相同的表达</h1><p>式，要避免这种情况–需要两个class都使用<br>Extract Method，把Extract的Method推入<br>superclass内</p>
+<h1 id="两个毫不相干的classes内出现Duplicate"><a href="#两个毫不相干的classes内出现Duplicate" class="headerlink" title="两个毫不相干的classes内出现Duplicate"></a>两个毫不相干的classes内出现Duplicate</h1><p>Code，应该考虑对其中一个使用Extract<br>Class，将重复代码提炼到一个独立class中<br>然后在另一个class内使用这个新class</p>
+<h1 id="Long-Method"><a href="#Long-Method" class="headerlink" title="Long Method"></a>Long Method</h1><p>所谓好处– </p>
+<h1 id="避免额外开销"><a href="#避免额外开销" class="headerlink" title="避免额外开销"></a>避免额外开销</h1><h1 id="不要跳转上下文就能理解程序解决方案"><a href="#不要跳转上下文就能理解程序解决方案" class="headerlink" title="不要跳转上下文就能理解程序解决方案"></a>不要跳转上下文就能理解程序解决方案</h1><h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><h1 id="条件式"><a href="#条件式" class="headerlink" title="条件式"></a>条件式</h1><h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><h1 id="Large-Class"><a href="#Large-Class" class="headerlink" title="Large Class"></a>Large Class</h1><h1 id="变量-amp-方法"><a href="#变量-amp-方法" class="headerlink" title="变量 &amp; 方法"></a>变量 &amp; 方法</h1><h1 id="重新抽象"><a href="#重新抽象" class="headerlink" title="重新抽象"></a>重新抽象</h1><h1 id="Long-Parameter-List"><a href="#Long-Parameter-List" class="headerlink" title="Long Parameter List"></a>Long Parameter List</h1><h1 id="抽象成类"><a href="#抽象成类" class="headerlink" title="抽象成类"></a>抽象成类</h1><h1 id="Divergent-Change"><a href="#Divergent-Change" class="headerlink" title="Divergent Change"></a>Divergent Change</h1><p>表现 一个类受到多种变化的影响</p>
+<h1 id="重构，保持类功能单一"><a href="#重构，保持类功能单一" class="headerlink" title="重构，保持类功能单一"></a>重构，保持类功能单一</h1><h1 id="Shotgun-Surgery"><a href="#Shotgun-Surgery" class="headerlink" title="Shotgun Surgery"></a>Shotgun Surgery</h1><p>表现 一种变化引发多个类相应修改</p>
+<h1 id="提前变化部分为公共的类"><a href="#提前变化部分为公共的类" class="headerlink" title="提前变化部分为公共的类"></a>提前变化部分为公共的类</h1><h1 id="Feature-Envy"><a href="#Feature-Envy" class="headerlink" title="Feature Envy"></a>Feature Envy</h1><p>表现 使用了大量其他类的成员</p>
+<h1 id="需要在一起的，就让他么在一起"><a href="#需要在一起的，就让他么在一起" class="headerlink" title="需要在一起的，就让他么在一起"></a>需要在一起的，就让他么在一起</h1><h1 id="Data-Clumps"><a href="#Data-Clumps" class="headerlink" title="Data Clumps"></a>Data Clumps</h1><p>表现 常一起出现的一堆数据</p>
+<h1 id="抽成一个新类"><a href="#抽成一个新类" class="headerlink" title="抽成一个新类"></a>抽成一个新类</h1><h1 id="Primitive-Obsession"><a href="#Primitive-Obsession" class="headerlink" title="Primitive Obsession"></a>Primitive Obsession</h1><h1 id="反复出现的一组参数，抽象成类"><a href="#反复出现的一组参数，抽象成类" class="headerlink" title="反复出现的一组参数，抽象成类"></a>反复出现的一组参数，抽象成类</h1><h1 id="有关联的多个数组，抽象成类"><a href="#有关联的多个数组，抽象成类" class="headerlink" title="有关联的多个数组，抽象成类"></a>有关联的多个数组，抽象成类</h1><h1 id="Switch-Statements"><a href="#Switch-Statements" class="headerlink" title="Switch Statements"></a>Switch Statements</h1><h1 id="state-strategy-多态"><a href="#state-strategy-多态" class="headerlink" title="state strategy 多态"></a>state strategy 多态</h1><h1 id="Parallel-Inheritance-Hierarchies"><a href="#Parallel-Inheritance-Hierarchies" class="headerlink" title="Parallel Inheritance Hierarchies"></a>Parallel Inheritance Hierarchies</h1><p>变现 每当为某个class增加一个subclass<br>必须也为另一个class相应增加一个<br>subclass</p>
+<h1 id="应该有一个类是可以去掉继承关系"><a href="#应该有一个类是可以去掉继承关系" class="headerlink" title="应该有一个类是可以去掉继承关系"></a>应该有一个类是可以去掉继承关系</h1><h1 id="Lazy-Class"><a href="#Lazy-Class" class="headerlink" title="Lazy Class"></a>Lazy Class</h1><h1 id="冗余类删除"><a href="#冗余类删除" class="headerlink" title="冗余类删除"></a>冗余类删除</h1><h1 id="Temporary-Field"><a href="#Temporary-Field" class="headerlink" title="Temporary Field"></a>Temporary Field</h1><h1 id="临时字段抽象成类"><a href="#临时字段抽象成类" class="headerlink" title="临时字段抽象成类"></a>临时字段抽象成类</h1><h1 id="Message-Chains"><a href="#Message-Chains" class="headerlink" title="Message Chains"></a>Message Chains</h1><p>表现 用户向一个对象索求另一个对象，<br>然后再向后者索求另一个对象，然后再索<br>求另一个对象…</p>
+<h1 id="拆"><a href="#拆" class="headerlink" title="拆"></a>拆</h1><h1 id="Middle-Man"><a href="#Middle-Man" class="headerlink" title="Middle Man"></a>Middle Man</h1><p>表现 某个类接口有一半的方法都委托给<br>其他类</p>
+<h1 id="用继承代替委托"><a href="#用继承代替委托" class="headerlink" title="用继承代替委托"></a>用继承代替委托</h1><h1 id="Inappropriate-Intimacy"><a href="#Inappropriate-Intimacy" class="headerlink" title="Inappropriate Intimacy"></a>Inappropriate Intimacy</h1><p>表现 两个类彼此使用对方私有的成员或<br>方法</p>
+<h1 id="划清界限拆散-合并-单向联系"><a href="#划清界限拆散-合并-单向联系" class="headerlink" title="划清界限拆散 合并 单向联系"></a>划清界限拆散 合并 单向联系</h1><h1 id="Incomplete-Library-Class"><a href="#Incomplete-Library-Class" class="headerlink" title="Incomplete Library Class"></a>Incomplete Library Class</h1><h1 id="不完善的库，包一层函数或包装成新类"><a href="#不完善的库，包一层函数或包装成新类" class="headerlink" title="不完善的库，包一层函数或包装成新类"></a>不完善的库，包一层函数或包装成新类</h1><h1 id="Data-Class"><a href="#Data-Class" class="headerlink" title="Data Class"></a>Data Class</h1><h1 id="将相关操作封装进去，减少public成员"><a href="#将相关操作封装进去，减少public成员" class="headerlink" title="将相关操作封装进去，减少public成员"></a>将相关操作封装进去，减少public成员</h1><p>变量</p>
+<h1 id="Refused-Bequest"><a href="#Refused-Bequest" class="headerlink" title="Refused Bequest"></a>Refused Bequest</h1><p>表现 父类里面方法很多，子类只用有限<br>几个， 继承体系设计错误</p>
+<h1 id="用代理替代继承关系"><a href="#用代理替代继承关系" class="headerlink" title="用代理替代继承关系"></a>用代理替代继承关系</h1><h1 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h1><p>避免用注释解释代码，而是说明代码的目的<br>背景等，让代码自己说明</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/30/ThreadLocal/" style="float: left;">
+        ← ThreadLocal
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/30/分布式锁三种实现/">
+        分布式锁三种实现 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

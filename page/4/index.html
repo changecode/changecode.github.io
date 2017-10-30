@@ -178,10 +178,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/计算机原理-数据的表示-2/">计算机原理--数据的表示-2</a></h3>
+                    <h3><a href="/2017/10/30/ReentrantLock-lock/">ReentrantLock-lock</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:22:57.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:08:12.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -191,13 +191,13 @@
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        计算机系统–数据的表示进位计数制进位计数制有两个特征基数R(Radix) 指进制数中所允许取值的个数，规则则是逢R进一位权W(Weight) 指基数R的i次幂 表示进制数中第i位的位权
-定点数的表示计算机本身无法识别数据的符号(+,-)。由于计算机只能识别0 1，因此规定：数据字的最高位为符号位，并且用0表示正用1表示-。 于是一个数据字的书写形式和机器内的存储形式存在差异，为了区别这种不同，把书写形式(正负符号加绝对值)的数据成为真值
+                        ReentrantLockReentrantLock实现lock接口，Sync与ReentrantLock是组合关系，且FairSync(公平锁)、NonfairySync(非公平锁)是Sync的子类。Sync基础AQS(AbstractQueuedSynchronized)
+AbstractQueuedSynchronized ：Java中管理锁的抽象类。该类为实现依赖于先进先出等待队列的阻塞锁和相关同步器(信号量、事件等待)提供一个
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/计算机原理-数据的表示-2/">Read More...</a>
+                        <a href="/2017/10/30/ReentrantLock-lock/">Read More...</a>
                     </p>
                     
                 </div>
@@ -209,10 +209,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/计算机原理-结构-1/">计算机原理--结构-1</a></h3>
+                    <h3><a href="/2017/10/30/ReentrantLock-unlock/">ReentrantLock-unlock</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:22:36.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:07:45.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -222,49 +222,20 @@
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        计算机系统的层次结构计算机是硬件与软件相结合的一个整体，对于不同的应用、不同的对象、不同的设计者，计算机的复杂程度各不相同，从而使计算机具有了不同的属性。为了使计算机硬件和软件之间、系统与使用者之间更好地协调与配合，以构成合理、高效的计算机系统，提出了计算机系统层次结构
-1、微程序设计层： 由机器硬件直接执行微指令编写的微程序
-2、指令系统层： 此层可以进行机器语言程序设计，该程序由第一层的微程序负责解释执行
-3、操作系统层： 由操作系
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/30/计算机原理-结构-1/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/30/Mybatis-动态sql-4/">Mybatis-动态sql_4</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-30T02:22:08.000Z" itemprop="datePublished">
-          2017-10-30
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        动态SQL通过if choose when otherwise trim whereset foreach标签，可组合成非常灵活的sql
-if    select * from user where                       id=#{id}            and deleteFlag=0;
+                        ReentrantLock-unlockunlock是不分公平锁和非公平锁
+public void unlock() {
+    sync.release(1);
+}
 
-
-where    select * from user                               
+public final boolean release(int arg) {
+    if(tryRelease(arg)) {
+        Node h = head;
+        if(h != null &amp;&amp; h.waitStatus !
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/Mybatis-动态sql-4/">Read More...</a>
+                        <a href="/2017/10/30/ReentrantLock-unlock/">Read More...</a>
                     </p>
                     
                 </div>
@@ -276,10 +247,10 @@ where    select * from user
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/Mybatis-sql执行流程/">Mybatis-sql执行流程</a></h3>
+                    <h3><a href="/2017/10/30/ReentrantReadWriteLock/">ReentrantReadWriteLock</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:21:47.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:07:21.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -289,15 +260,15 @@ where    select * from user
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        sql执行流程从配置中获取Environmnet从Environment中取得DataSource从Environment中取得TransactionFactory从DataSource里取得数据库连接对象Connection
-在取得的数据库连接上创建事务对象Transaction
-创建Executor对象创建sqlSession对象在mybatis中，通过MapperProxy动态代理dao类
-Executor可以看出，如果不开启ca
+                        ReentrantReadWriteLockReadWriteLock:维护了一对相关的锁，一个用于只读操作，另一个用于写入操作。只要没有writer，读取锁可以由多个reader线程同时保持。写入锁是独占的。对于ReadWriteLock而言，一个资源能够被多个读线程访问，或者被一个写线程访问，但是不能同时存在读写线程。
+public interface ReadWriteLock {
+    Lock readLock();
+   
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/Mybatis-sql执行流程/">Read More...</a>
+                        <a href="/2017/10/30/ReentrantReadWriteLock/">Read More...</a>
                     </p>
                     
                 </div>
@@ -309,10 +280,10 @@ Executor可以看出，如果不开启ca
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/mybatis-入门-1/">mybatis_入门_1</a></h3>
+                    <h3><a href="/2017/10/30/Semaphore/">Semaphore</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:21:09.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:06:48.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -322,15 +293,14 @@ Executor可以看出，如果不开启ca
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        mybatisORM思想从配置文件(通常是xml配置文件)得到sessionFactory
-有sessionFactory产生session在session中完成对数据的增删改查用完之后关闭session在Java对象和数据库之间有做mapping的配置文件，通常也是xml文件
-功能架构API接口层 提供给外部使用的接口API，开发人员通过这些本地API来操纵数据库。接口层一接受到调用请求就会调用数据处理层来完成具体的数据处理
-数据处理
+                        Semaphore信号量Semaphore是一个控制访问多个共享资源的计数器，本质上是一个共享锁
+Java并发提供了二种加锁模式：共享锁和独占锁。ReentrantLock是独占锁，每次只能有一个线程持有，共享锁运行多个线程并行持有锁，并发访问共享资源
+独占锁采用的是一种悲观的加锁策略，对应写而言为了避免冲突独占是可以的，但是对于读就没必要了。 如果某个只读线程获取独占锁，则其他读线程都只能等待了，这种情况下就现在了不必要的并发性。共享
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/mybatis-入门-1/">Read More...</a>
+                        <a href="/2017/10/30/Semaphore/">Read More...</a>
                     </p>
                     
                 </div>
@@ -342,10 +312,10 @@ Executor可以看出，如果不开启ca
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/从源码分析mybatis加载过程/">从源码分析mybatis加载过程</a></h3>
+                    <h3><a href="/2017/10/30/synchronized与lock/">synchronized与lock</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:20:44.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:06:21.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -355,17 +325,14 @@ Executor可以看出，如果不开启ca
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        从源码分析mybatis加载过程SqlSessionFactoryBuilderpublic class SqlSessionFactoryBuilder {
-
-    //Reader读取mybatis配置文件，传入构造方法
-    //除了Reader外，其实还有对应的inputStream作为参数的构造方法，
-    //这也体现了mybatis配置的灵活性
-    public SqlSessionFactory build(R
+                        1、 synchronized(this)1、当二个并发线程访问同一个对象object中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块
+2、当一个线程访问object的一个synchronized(this)同步代码块时，另一个线程仍然可以访问object中的非synchronized同步代码块
+3、当一个线程访问object的一个
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/从源码分析mybatis加载过程/">Read More...</a>
+                        <a href="/2017/10/30/synchronized与lock/">Read More...</a>
                     </p>
                     
                 </div>
@@ -377,10 +344,10 @@ Executor可以看出，如果不开启ca
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/Mybatis-mybatis-插件-6/">Mybatis-mybatis_插件_6</a></h3>
+                    <h3><a href="/2017/10/30/多线程概念与原理/">多线程概念与原理</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:20:13.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:05:06.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -390,15 +357,13 @@ Executor可以看出，如果不开启ca
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        插件默认情况下，mybatis允许使用插件来拦截的方法如下
-Executor(update query flushStatements commit rollback getTransaction close isClosed)拦截执行器方法
-ParameterHandler(getParameterObjectsetParameters)拦截参数的处理
-ResultSetHandler(handleResultSetshandleOu
+                        1、java.lang.Thread类的一个实例
+2、线程的执行：使用java.lang.Thread类或者java.lang.Runnable接口编写代码来定义、实例化和启动新线程。一个Thread类实例只是一个对象，像Java中的任何其他对象一样，具有变量和方法，生死在堆上。Java中，每个线程都有一个调用栈，即使不在程序中创建任何新的线程，线程也在后台运行着。一个Java应用总是从main方法开始运行，main方法运行在一个线程内
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/Mybatis-mybatis-插件-6/">Read More...</a>
+                        <a href="/2017/10/30/多线程概念与原理/">Read More...</a>
                     </p>
                     
                 </div>
@@ -410,10 +375,10 @@ ResultSetHandler(handleResultSetshandleOu
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/Mybatis-mapper映射文件配置-3/">Mybatis-mapper映射文件配置_3</a></h3>
+                    <h3><a href="/2017/10/30/同步与交互/">同步与交互</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:19:51.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:04:16.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -423,15 +388,13 @@ ResultSetHandler(handleResultSetshandleOu
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        mapper映射文件配置在mapper文件中，以mapper作为根节点。其下面可以配置的元素节点有 select insertupdate delete cache cache-ref resultMapsql
-insert update delete &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;   
-&lt;!DOCTYPE mapper   
-P
+                        1、锁的原理Java中每个对象都以一个内置锁。当程序运行到非静态的synchronized同步方法上时，自动获得与正在执行代码类的当前实例有关的锁。获得一个对象的锁也称为获取锁、锁定对象、在镀锡上锁定或在对象上同步。当程序运行到synchronized同步方法或代码块该对象锁才起作用
+一个对象只有一个锁。所以，如果一个线程获得该锁，就没有其他线程可以获得锁，直到第一个线程释放(或返回)锁。这也意味着任何其他线程都不能进入该对象上的syn
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/Mybatis-mapper映射文件配置-3/">Read More...</a>
+                        <a href="/2017/10/30/同步与交互/">Read More...</a>
                     </p>
                     
                 </div>
@@ -443,10 +406,10 @@ P
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/MySQL和InnoDB/">MySQL和InnoDB</a></h3>
+                    <h3><a href="/2017/10/30/线程池使用说明/">线程池使用说明</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:19:26.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:03:43.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -456,13 +419,14 @@ P
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        MySQL和InnoDB数据库和实例在MySQL中，实例和数据库往往都是一一对应的，而我们无法直接操作数据库，而是要通过数据库实例来操作数据库文件，可以理解为数据库实例是数据库为上层提供的一个专门用于操作的接口
-在Unix上，启动一个MySQL实例往往会产生两个进程，mysqld就是真正的数据库服务守护进程，而mysqld_safe是一个用于检查和设置mysqld启动的控制程序，负责监控MySQL进程的执行，当mysqld发生错误时 ，
+                        1、线程池的作用线程池作用就是限制系统中执行线程的数量；根据系统的环境情况，可以自动或手动设置线程数量，达到运行的最佳效果；少了浪费，多了拥挤。用线程池控制线程数量，其他线程排队等候。一个任务执行完毕，再从队列中取最前面的任务开始执行。若队列中没有等待进程，线程池的这一资源处于等待。当一个新任务需要运行时，如果线程池中有等待的工作线程，就可以开始运行了；否则进入等待队列。
+为什么要用线程池
+1、减少了创建和销毁线程的次数，每个工作线程都
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/MySQL和InnoDB/">Read More...</a>
+                        <a href="/2017/10/30/线程池使用说明/">Read More...</a>
                     </p>
                     
                 </div>
@@ -474,10 +438,10 @@ P
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2017/10/30/mysql事务实现/">mysql事务实现</a></h3>
+                    <h3><a href="/2017/10/30/线程状态转换/">线程状态转换</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2017-10-30T02:19:04.000Z" itemprop="datePublished">
+      <time datetime="2017-10-30T02:03:18.000Z" itemprop="datePublished">
           2017-10-30
       </time>
     
@@ -487,13 +451,48 @@ P
                 <div class="col-md-8">
                     <p class="index-excerpt">
                       
-                        MySQL事务实现原子性虽然事务具有原子性，但是原子性并不是只与事务有关系。 由于操作并不具有原子性，并且可以再分为多个操作，当这些操作出现错误或抛出异常时，整个操作就可能不回继续执行下去而已经进行的操作造成的副作用就可能造成数据更新的丢失或错误。事务其实和一个草没有什么太大的区别，它是一些了的数据操作的集合，如果事务不具备原子性，那么久没办法保证同一个事务中的所有操作都被执行或者未被执行了
-回滚日志想要保证事务的原子性，就需要在异常发
+                        1、线程的状态转换是线程控制的基础,可分为五大状态：生、死、可运行、运行、等待\阻塞。1)新状态： 线程对象已经创建，还没在其上调用start方法
+2)可运行状态：当线程有资格运行，但调度程序还没有把它选定为运行线程时线程所处的状态。当start方法调用时，线程首先进入可运行状态，在线程运行之后或者从阻塞、等待或者睡眠状态回来后，也返回到可运行状态
+3) 运行状态：线程调度程序可从运行池中选择一个线程作为当前线程时所处的状态
+4)等待\
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2017/10/30/mysql事务实现/">Read More...</a>
+                        <a href="/2017/10/30/线程状态转换/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/10/30/Annotation/">Annotation</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-30T02:01:32.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        AnnotationAnnotation是Java5开始引入的特性。提供了一种安全的类似于注释和Java doc的机制
+Meta Annotation@Target@Target说明了Annotation所修饰的对象范围Annotation可被用于packages types 类型成员(方法、构造方法、成员变量、枚举值)方法参数和本地变量。
+@Target作用：用于描述注解的使用范围
+@Target取值1、CONSTRUCTOR  用于
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/30/Annotation/">Read More...</a>
                     </p>
                     
                 </div>
@@ -503,8 +502,8 @@ P
         </div>
         
         <nav class="pagination" role="pagination">
-          
-          <a class="pull-right" href="/page/2/">Older Posts →</a>
+          <a class="pull-left" href="/page/3/">← Newer Posts</a>
+          <a class="pull-right" href="/page/5/">Older Posts →</a>
         </nav>
     </div>
 </section>

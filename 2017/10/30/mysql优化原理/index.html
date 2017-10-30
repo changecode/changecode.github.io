@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>mysql优化原理 | 阿修罗</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="阿修罗">
+    <meta name="author" content="changecode">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="阿修罗" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">阿修罗</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-30T02:18:16.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                <h1>mysql优化原理</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="mysql逻辑架构"><a href="#mysql逻辑架构" class="headerlink" title="mysql逻辑架构"></a>mysql逻辑架构</h1><p>MySQL逻辑架构整体分为三层，最上层为客户端层，并非MySQL独有，诸如：连接<br>处理、授权认证、安全等功能均在这一层处理</p>
+<p>MySQL核心服务在中间一层，包括查询解析、分析、优化、缓存、内置函数。所<br>有的跨存储引擎的功能也在这一层实现。 存储过程、触发器、视图等</p>
+<p>最下为存储引擎，负责MySQL中的数据存储和提取。</p>
+<h1 id="MySQL查询过程"><a href="#MySQL查询过程" class="headerlink" title="MySQL查询过程"></a>MySQL查询过程</h1><h1 id="客户端-服务端通信协议"><a href="#客户端-服务端通信协议" class="headerlink" title="客户端/服务端通信协议"></a>客户端/服务端通信协议</h1><p>两者通信协议是半双工的。 在任一时刻，要不是服务器向客户端发送数据<br>要不就是客户端向服务器发送数据，这两个动作不能同时发送。一旦一端开始<br>发送消息，另一端要接受完整个消息才能响应它，无法将一个消息切成小块<br>独立发送，也无法进行流量控制。</p>
+<p>客户端用一个单独的数据包将查询请求发送给服务器，所以当查询语句很长的<br>时候，需要设置max_allowed_packet参数。 但如果查询实在太大，服务器端<br>会拒绝接受更多数据并抛出异常</p>
+<p>与之相反，服务器响应给用户的数据通常会很多，由多个数据包组成。但是当<br>服务器响应客户端请求时，客户端必须完整的接收整个返回结果，而不能简单<br>的只取前面几条结果，然后让服务器停止发送。因此，在实际开发中，减少通信<br>数据包的大小和数据是一个非常好的习惯，这也是查询避免使用星号原因之一</p>
+<h1 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h1><p>在解析一个查询语句钱，如果查询缓存是打开的，那么MySQL会检查这个查询<br>语句是否命中查询缓存中的数据。如果当前查询恰好命中查询缓存，在检查<br>一次用户权限后直接返回缓存中的结果。这种情况下，查询不会被解析，也不会<br>生成执行计划，更不会执行</p>
+<p>MySQL将缓存存放在一个引用表(类型hashmap的数据结构). 通过一个哈希值索引<br>这个哈希值通过查询本身、当前要查询的数据库、客户端协议版本号等一些可<br>能影响结果的信息计算得来。 所以两个查询在任何字符上的不同，都会导致<br>缓存不会命中</p>
+<p>如果查询中包含任何用户自定义函数、存储函数、用户变量、临时表、MySQL<br>库中的系统表。其查询结果都不会被缓存。 比如函数now或者current_date会<br>因为不同的查询时间，返回不同的查询结构，再比如包含current_user<br>或者Connecion_id的查询语句因为不同的用户返回不同的结果。</p>
+<p>既然是缓存就会失效，那么什么失效。 MySQL查询缓存系统会跟踪查询中涉及<br>的每个表，如果这些表(数据或结构)发生变化，那么和这张表相关的所有缓存<br>数据都会失效。 正因为如此，在任何的写操作时，MySQL必须将对应表相关的<br>所有缓存都设置为失效。 如果查询缓存非常大或碎片很多，那么这个操作可能<br>带来很大的系统消耗。而且查询缓存对系统的额外消耗也不仅仅是在写操作，<br>读操作也不例外。 针对于此优化建议</p>
+<p>1、用多个小表代替一个大表(不要过度设计)<br>2、批量插入代替循环单条插入<br>3、合理控制缓存空间大小，一般来说设置为几十MB比较合适<br>4、可以通过sql_cache和sql_no_cache来控制某个查询语句是否需要进行缓存</p>
+<p>最后的忠告是不要轻易打开查询缓存，特别是写密集型应用。如果你实在是忍不住，可以将query_cache_type设置为DEMAND，这时只有加入SQL_CACHE的查询才会走缓存，其他查询则不会</p>
+<h1 id="语法解析和预处理"><a href="#语法解析和预处理" class="headerlink" title="语法解析和预处理"></a>语法解析和预处理</h1><p>MySQL通过关键字将sql语句进行解析，并生成一颗对应的解析树。这个过程<br>解析器注意通过语法规则来验证和解析。</p>
+<h1 id="查询优化"><a href="#查询优化" class="headerlink" title="查询优化"></a>查询优化</h1><p>经过前面的步骤生成的语法树被认为是合法的，由优化器将其转化成查询计划<br>多数情况下，一条查询可以有很多种执行方式，最后都返回相应的结果。优化<br>器的作用就是找到这其中最好的执行计划</p>
+<p>MySQL认为的最优和我们想的不一样(我们希望执行时间尽可能断，但MySQL<br>只选择它认为成都小的，但成本小并不意味着执行时间短)等等</p>
+<p>MySQL的查询优化器是一个非常复杂的部件，使用了非常多的优化策略来生成一<br>各最优的执行计划<br>1、重新定义表的关联顺序(多张表关联查询时，并不一定按照sql中指定的顺序<br>进行，但有方法可以指定关联顺序)<br>2、优化min和max函数<br>3、提前终止查询(limit)<br>4、优化排序</p>
+<h1 id="查询执行引擎"><a href="#查询执行引擎" class="headerlink" title="查询执行引擎"></a>查询执行引擎</h1><p>完成了解析和优化阶段之后，MySQL会生成对应的执行计划，查询执行引擎根据<br>执行计划给出的指令逐步执行得出结果。 整个执行过程的大部分操作均是通过<br>调用存储引擎实现的接口来完成， 这些接口被称为handler api。 查询过程中<br>每一张表由一个handler实例表示。实际上MySQL在查询优化阶段就为每一张表<br>创建了一个handler实例，优化器可以根据这些实例的接口来获取表的相关信息<br>，包括表的所有列名、索引统计信息等。存储引擎接口提供了非常丰富的功能<br>但其底层仅有几十个接口，这些接口像搭积木一样完成了一次查询的大部分操作</p>
+<h1 id="总结MySQL查询执行过程"><a href="#总结MySQL查询执行过程" class="headerlink" title="总结MySQL查询执行过程"></a>总结MySQL查询执行过程</h1><p>1、客户端向MySQL服务器发送一条查询请求<br>2、服务器首先检查查询缓存，如果命中，直接返回存储在缓存中的结果。<br>否则进入下一阶段<br>3、服务器进行sql解析、预处理、再由由优化器生成对应的执行计划<br>4、MySQL根据执行计划，调用存储引擎Api来执行查询<br>5、将结果返回给客户端，同时缓存查询结果</p>
+<h1 id="数据类型优化"><a href="#数据类型优化" class="headerlink" title="数据类型优化"></a>数据类型优化</h1><p>常见误区如下:</p>
+<p>1、同常来说把可为null的列改为not null不会对性能提升多少，如果只是<br>计划在列上创建索引，就应该将该列设置为not null<br>2、对整数类型指定宽度,比如int(11)没有什么作用， int使用32位(4个字节)<br>存储空间即表示范围已经确定，所以int(1)和int(20)对于存储和计算一样<br>3、unsigned表示不允许负值，大致可以使正数的上限提高一倍。比如tinyint<br>存储范围是-128-127，而unsigned tinyint存储的范围是0-255<br>4、timestamp使用四个字节存储空间，datetime使用八个字节存储空间。times<br>tamp只能表示1970-2038，比datetime表示范围小，而且timestamp的值因<br>时区不同而不同<br>5、schema的列不要太多。 原因是存储引擎的Api工作时需要在服务器层和<br>存储引擎层之间通过行缓冲格式拷贝数据，然后在服务器层将缓冲内容解码<br>成各个列，这个转换过程代价是很高的。<br>6、大表alert table非常耗时，MySQL执行大部分修改表结果操作的方法是<br>使用新的结构创建一张空表，从旧表中查出所有的数据插入新表，然后再<br>删除旧表，尤其当内存不足而表又很大，而且还有很大索引的情况下，耗时久</p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>语法  create view 视图名 as select 语句</p>
+<p>好处:<br>1、简化查询语句<br>create view avgPrice as select cat_id,avg(shop_price) from goods gropy by cat_id;<br>select * from avgPrice</p>
+<p>2、可以进行权限控制<br>把表的权限封闭，但是开放相应的视图权限，视图里只开放部分数据列<br>比如我们的goods商品表，我们不想让别人看到我们的销售价格，这时候我们就<br>可以把查看商品表的权限封闭，创建一张视图<br>create view showGoods as select goods_id,goods_name from goods;<br>不出现销售价格列就可以了</p>
+<p>3、大数据分表时可以用到<br>News表<br>newsid  1,2,3,4…<br>news1,news2,news3,news4表<br>把一张表的数据分散到4张表里</p>
+<p>可以用视图，把四张表形成一张视图<br>create view news as select <em> from news1 union select </em> from news2<br>union …</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/10/30/MySQL线程池/" style="float: left;">
+        ← MySQL线程池
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/10/30/select-for-update/">
+        select..for update →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By changecode. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
