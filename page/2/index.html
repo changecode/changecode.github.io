@@ -178,6 +178,37 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2017/10/30/mysql事务实现/">mysql事务实现</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-30T02:19:04.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        MySQL事务实现原子性虽然事务具有原子性，但是原子性并不是只与事务有关系。 由于操作并不具有原子性，并且可以再分为多个操作，当这些操作出现错误或抛出异常时，整个操作就可能不回继续执行下去而已经进行的操作造成的副作用就可能造成数据更新的丢失或错误。事务其实和一个草没有什么太大的区别，它是一些了的数据操作的集合，如果事务不具备原子性，那么久没办法保证同一个事务中的所有操作都被执行或者未被执行了
+回滚日志想要保证事务的原子性，就需要在异常发
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/30/mysql事务实现/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2017/10/30/MySQL线程池/">MySQL线程池</a></h3>
                     <span>
                         <span class="post-meta">
@@ -459,37 +490,6 @@ B+树说明浅蓝色的块称之为一个磁盘块，可以看到每个磁盘块
                     
                     <p class="pull-right readMore">
                         <a href="/2017/10/30/JVM-优化经验/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/30/Java类加载机制/">Java类加载机制</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-30T02:14:01.000Z" itemprop="datePublished">
-          2017-10-30
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        类加载机制Java虚拟机把描述类的数据从class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型
-类从被加载到虚拟机内存中开始，到卸载出内存为止，整个生命周期包含：加载、验证、准备、解析、初始化、使用、卸载七个阶段。其中验证、准备和解析三部分统称为连接。加载、验证、准备、初始化和卸载五个阶段顺序是确定的，类的加载过程必须按照这个顺序来开始，而解析过程则不一定，它在某些情况下可以在初始化阶段
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/30/Java类加载机制/">Read More...</a>
                     </p>
                     
                 </div>

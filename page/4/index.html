@@ -178,6 +178,36 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2017/10/30/ReentrantLock/">ReentrantLock</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-30T02:08:34.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        ReentrantLock定义：可重入的互斥锁，是一种递归无阻塞的同步机制。可以等同于synchronized的使用，但是比其更强大、灵活可减少死锁的发生的概率。ReentrantLock将由最近成功获得锁，并且还没有释放该锁的线程所拥有。当锁没有被另一个线程所拥有时，调用lock的线程将成功获取该锁并返回。如果当期线程已经拥有该锁，此方法立即返回，可以使用isHeldByCurrentThread和getHoldCount方法来检查此
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/30/ReentrantLock/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2017/10/30/ReentrantLock-lock/">ReentrantLock-lock</a></h3>
                     <span>
                         <span class="post-meta">
@@ -460,39 +490,6 @@ Java并发提供了二种加锁模式：共享锁和独占锁。ReentrantLock是
                     
                     <p class="pull-right readMore">
                         <a href="/2017/10/30/线程状态转换/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/30/Annotation/">Annotation</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-30T02:01:32.000Z" itemprop="datePublished">
-          2017-10-30
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        AnnotationAnnotation是Java5开始引入的特性。提供了一种安全的类似于注释和Java doc的机制
-Meta Annotation@Target@Target说明了Annotation所修饰的对象范围Annotation可被用于packages types 类型成员(方法、构造方法、成员变量、枚举值)方法参数和本地变量。
-@Target作用：用于描述注解的使用范围
-@Target取值1、CONSTRUCTOR  用于
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/30/Annotation/">Read More...</a>
                     </p>
                     
                 </div>
