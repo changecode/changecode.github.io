@@ -178,6 +178,37 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2017/10/30/DougLea-java内存模型-指南/">DougLea_java内存模型-指南</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-30T02:11:03.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        Java内存模型_指南单处理器如果能保证正在生成的代码运行在单个处理器上，那就可以跳过本节的其余部分。因为单处理器保持这明显的顺序一致性，除非对象内存以某种方式与可异步访问的IO内存共享，否则永远都不需要插入屏障指令。采用了特殊映射的java.nio.buffers可能护出现这种情况，但也许只会影响内部的JVM支持代码，而不影响Java代码而且，可以想象，如果上下文切换时不要求充分的同步那就需要使用一些特殊的屏障了
+插入屏障当程序执行时
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/30/DougLea-java内存模型-指南/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2017/10/30/DougLea-任务取消/">DougLea_任务取消</a></h3>
                     <span>
                         <span class="post-meta">
@@ -466,37 +497,6 @@ Java并发提供了二种加锁模式：共享锁和独占锁。ReentrantLock是
                     
                     <p class="pull-right readMore">
                         <a href="/2017/10/30/synchronized与lock/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/30/多线程概念与原理/">多线程概念与原理</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-30T02:05:06.000Z" itemprop="datePublished">
-          2017-10-30
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        1、java.lang.Thread类的一个实例
-2、线程的执行：使用java.lang.Thread类或者java.lang.Runnable接口编写代码来定义、实例化和启动新线程。一个Thread类实例只是一个对象，像Java中的任何其他对象一样，具有变量和方法，生死在堆上。Java中，每个线程都有一个调用栈，即使不在程序中创建任何新的线程，线程也在后台运行着。一个Java应用总是从main方法开始运行，main方法运行在一个线程内
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/30/多线程概念与原理/">Read More...</a>
                     </p>
                     
                 </div>

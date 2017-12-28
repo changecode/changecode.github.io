@@ -178,6 +178,37 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2017/10/30/多线程概念与原理/">多线程概念与原理</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-10-30T02:05:06.000Z" itemprop="datePublished">
+          2017-10-30
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        1、java.lang.Thread类的一个实例
+2、线程的执行：使用java.lang.Thread类或者java.lang.Runnable接口编写代码来定义、实例化和启动新线程。一个Thread类实例只是一个对象，像Java中的任何其他对象一样，具有变量和方法，生死在堆上。Java中，每个线程都有一个调用栈，即使不在程序中创建任何新的线程，线程也在后台运行着。一个Java应用总是从main方法开始运行，main方法运行在一个线程内
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/10/30/多线程概念与原理/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2017/10/30/同步与交互/">同步与交互</a></h3>
                     <span>
                         <span class="post-meta">
@@ -466,40 +497,6 @@ public class SequenceImpl implementsSequence {    private stat
                     
                     <p class="pull-right readMore">
                         <a href="/2017/10/30/重构/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/30/分布式锁三种实现/">分布式锁三种实现</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-30T01:58:21.000Z" itemprop="datePublished">
-          2017-10-30
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        zookeeper原理
-基于zookeeper瞬时有序节点实现的分布式锁，每个客户端对某个功能加锁时，在zookeeper上的与该功能对象的指定节点的目录下，生成一个唯一的瞬时有序节点。判断获取锁，只需要判断有序节点中序号最小的一个。当释放锁的时候，只要将这个瞬时节点删除即可
-实现采用第三方库curator实现zk分布式锁核心代码
-public boolean tryLock(LockInfo info) {
-    InterProc
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/30/分布式锁三种实现/">Read More...</a>
                     </p>
                     
                 </div>
